@@ -1,0 +1,42 @@
+[
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b01",
+        "name": "Adidas",
+        "icon": "https://cdn.worldvectorlogo.com/logos/adidas-9.svg"
+    },
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b02",
+        "name": "ASICS",
+        "icon": "https://cdn.worldvectorlogo.com/logos/asics-6.svg"
+    },
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b03",
+        "name": "Converse",
+        "icon": "https://cdn.worldvectorlogo.com/logos/converse.svg"
+    },
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b04",
+        "name": "Jordan",
+        "icon": "https://cdn.worldvectorlogo.com/logos/jordan-2.svg"
+    },
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b05",
+        "name": "Nike",
+        "icon": "https://cdn.worldvectorlogo.com/logos/nike-11.svg"
+    },
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b06",
+        "name": "PUMA",
+        "icon": "https://cdn.worldvectorlogo.com/logos/puma-logo.svg"
+    },
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b07",
+        "name": "Reebok",
+        "icon": "https://cdn.worldvectorlogo.com/logos/reebok-2019-logo.svg"
+    },
+    {
+        "_id": "21b20b5880ed49eaa9156849f6967b08",
+        "name": "Vans",
+        "icon": "https://cdn.worldvectorlogo.com/logos/vans-5.svg"
+    }
+]
