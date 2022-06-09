@@ -15,8 +15,8 @@ const Header = () => {
           <Link className="mr-5 hover:text-gray-900" to="/">
             Third Link
           </Link>
-          <Link className="hover:text-gray-900" to="/">
-            Fourth Link
+          <Link className="hover:text-gray-900" to="/init">
+            Init
           </Link>
         </nav>
         <Link
@@ -27,9 +27,9 @@ const Header = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
             viewBox="0 0 24 24"
           >
@@ -44,9 +44,9 @@ const Header = () => {
               <svg
                 fill="none"
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 className="w-4 h-4 ml-1"
                 viewBox="0 0 24 24"
               >
