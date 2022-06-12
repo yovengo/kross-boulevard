@@ -7,13 +7,10 @@ const Header = () => {
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
           <Link className="mr-5 hover:text-gray-900" to="/">
-            First Link
+            Home
           </Link>
-          <Link className="mr-5 hover:text-gray-900" to="/">
-            Second Link
-          </Link>
-          <Link className="mr-5 hover:text-gray-900" to="/">
-            Third Link
+          <Link className="mr-5 hover:text-gray-900" to="/sneakers">
+            Sneakers
           </Link>
           <Link className="hover:text-gray-900" to="/init">
             Init
@@ -33,7 +30,7 @@ const Header = () => {
             className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
             viewBox="0 0 24 24"
           >
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
           </svg>
           <span className="ml-3 text-xl">KrossBlvd</span>
         </Link>
@@ -50,7 +47,7 @@ const Header = () => {
                 className="w-4 h-4 ml-1"
                 viewBox="0 0 24 24"
               >
-                <path d="M5 12h14M12 5l7 7-7 7"></path>
+                <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
           </Link>

@@ -26,8 +26,8 @@ export const SneakersProvider = ({ children }) => {
 
   async function getSneakers() {
     try {
-      const { context } = await sneakersService.get();
-      setSneakers(context);
+      const { content } = await sneakersService.get();
+      setSneakers(content);
       setLoading(false);
     } catch (error) {
       errorCatcher(error);
