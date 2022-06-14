@@ -16,7 +16,7 @@ const SneakersTiles = () => {
                 <img
                   alt="ecommerce"
                   className="object-cover object-center w-full h-full block"
-                  src={s.image}
+                  src={s.image[0]}
                 />
               </div>
               <div className="pt-4 pl-4 pb-4">
