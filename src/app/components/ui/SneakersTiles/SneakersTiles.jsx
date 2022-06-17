@@ -1,11 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { useSneakers } from '../../../hooks/useSneakers';
 import { Brand } from '../Brand';
 
-const SneakersTiles = () => {
-  const sneakers = useSneakers();
-
+const SneakersTiles = ({ sneakers }) => {
   return (
     <>
       {sneakers.map((s) => (
@@ -37,5 +35,7 @@ const SneakersTiles = () => {
     </>
   );
 };
-
+SneakersTiles.propTypes = {
+  sneakers: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 export default SneakersTiles;
