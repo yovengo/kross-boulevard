@@ -4,7 +4,7 @@ import Logo from '../../../assets/svg/Logo';
 
 const Header = () => {
   return (
-    <header className="text-gray-600 body-font">
+    <header className="text-gray-600 body-font shadow-sm">
       <div className="mx-10 flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link
           to="/"
