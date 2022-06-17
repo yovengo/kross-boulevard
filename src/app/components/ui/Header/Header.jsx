@@ -24,7 +24,13 @@ const Header = () => {
           </Link>
         </nav>
         <button className="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-          Login
+          <Link to="/" className="hover:text-red-700 pr-1">
+            Login
+          </Link>{' '}
+          /{' '}
+          <Link to="/" className="hover:text-red-700 pl-1">
+            Register
+          </Link>
         </button>
       </div>
     </header>
