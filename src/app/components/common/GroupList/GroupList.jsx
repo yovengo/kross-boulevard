@@ -15,7 +15,7 @@ const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
             (!selectedItem ? ' bg-gray-200' : '')
           }
         >
-          All brands
+          AllBrands
         </li>
         {items.map((item) => (
           <li

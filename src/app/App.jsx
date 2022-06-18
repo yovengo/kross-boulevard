@@ -8,24 +8,27 @@ import Sneakers from './layouts/Sneakers';
 import { Footer, Header } from './components/ui';
 import { BrandProvider } from './hooks/useBrand';
 import { MaterialProvider } from './hooks/useMaterials';
+import { SneakersProvider } from './hooks/useSneakers';
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
-      <div className="flex-grow">
-        <MaterialProvider>
-          <BrandProvider>
-            <Switch>
-              <Route path="/sneakers/:sneakersId?" component={Sneakers} />
-              <Route path="/init" component={DataInit} />
-              <Route path="/" component={Main} />
-              <Redirect to="/" />
-            </Switch>
-          </BrandProvider>
-        </MaterialProvider>
-      </div>
-      <Footer />
+      <SneakersProvider>
+        <Header />
+        <div className="flex-grow">
+          <MaterialProvider>
+            <BrandProvider>
+              <Switch>
+                <Route path="/sneakers/:sneakersId?" component={Sneakers} />
+                <Route path="/init" component={DataInit} />
+                <Route path="/" component={Main} />
+                <Redirect to="/" />
+              </Switch>
+            </BrandProvider>
+          </MaterialProvider>
+        </div>
+        <Footer />
+      </SneakersProvider>
     </div>
   );
 }
