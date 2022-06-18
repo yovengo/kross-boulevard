@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const SortButton = ({ onSort }) => {
   return (
-    <div className="text-gray-900">
+    <div className="text-gray-900 pt-8 lg:pt-0">
       <select
         onChange={onSort}
-        className="w-full p-3 px-4 font-medium  bg-white border rounded-xl outline-none appearance-none focus:border-indigo-600"
+        className="w-full p-3 px-4 text-lg font-medium bg-white border rounded-xl outline-none appearance-none hover:bg-[#f3f1f4]"
       >
         <option value="name asc">Sort by name (A-Z)</option>
         <option value="name desc">Sort by name (Z-A)</option>

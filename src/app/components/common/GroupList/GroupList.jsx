@@ -11,7 +11,7 @@ const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
           }}
           role="button"
           className={
-            'flex justify-center p-3 px-4 align-middle lg:border-r lg:border-b-0 border-b lg:first:rounded-l-xl hover:text-red-700 bg-gray-200 hover:bg-gray-200' +
+            'flex justify-center align-middle p-3 px-4  lg:border-r lg:border-b-0 border-b lg:first:rounded-l-xl hover:text-red-700 bg-gray-200 hover:bg-gray-200' +
             (!selectedItem ? ' bg-gray-200' : '')
           }
         >

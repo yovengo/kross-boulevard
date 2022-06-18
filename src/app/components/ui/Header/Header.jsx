@@ -7,8 +7,8 @@ const Header = () => {
   const [menuState, setMenuState] = useState(false);
 
   const navigation = [
-    { title: 'Главная', path: '/' },
-    { title: 'Кроссовки', path: '/sneakers' },
+    { title: 'Home', path: '/' },
+    { title: 'Sneakers', path: '/sneakers' },
     { title: 'Init', path: '/init' },
   ];
   return (
@@ -27,7 +27,7 @@ const Header = () => {
           >
             <ul className="mt-4 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0">
               {navigation.map((item, index) => (
-                <li key={index} className="text-gray-600 hover:text-gray-900">
+                <li key={index} className="text-gray-900 hover:text-red-700">
                   <Link to={item.path}>{item.title}</Link>
                 </li>
               ))}
@@ -38,9 +38,9 @@ const Header = () => {
             <div className="lg:block hidden">
               <Link
                 to="/signup"
-                className="py-3 px-4 text-gray-600 bg-gray-300 hover:bg-gray-400 hover:text-gray-900 rounded-xl"
+                className="py-2.5 px-4 text-gray-900 text-lg font-medium bg-gray-200 hover:text-red-700 rounded-xl"
               >
-                SignUp
+                Login
               </Link>
             </div>
             <button

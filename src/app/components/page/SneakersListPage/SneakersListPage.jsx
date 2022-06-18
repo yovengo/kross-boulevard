@@ -45,9 +45,10 @@ const SneakersListPage = () => {
 
   return (
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 py-14 mx-auto">
+        <h1 className="text-3xl text-gray-900 font-medium">Sneakers</h1>
         {brands && (
-          <div className="lg:flex justify-between pb-8">
+          <div className="lg:flex justify-between py-8">
             <GroupList
               items={brands}
               selectedItem={selectedBrand}
