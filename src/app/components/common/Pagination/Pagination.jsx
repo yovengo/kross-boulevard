@@ -10,13 +10,13 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   return (
     <nav className="pt-8">
       <ul className="flex text-gray-900 lg:text-lg">
-        <div className="border-2 rounded-xl bg-white">
+        <div className="border rounded-xl bg-white">
           {pages.map((page) => (
             <button
               onClick={() => onPageChange(page)}
               key={'page_' + page}
               className={
-                'p-3 px-4 hover:text-red-700 hover:bg-[#f3f1f4] transition-colors border-r-2 first:rounded-l-xl last:rounded-r-xl last:border-none' +
+                'p-3 px-4 hover:text-red-700 hover:bg-[#f3f1f4] transition-colors border-r first:rounded-l-xl last:rounded-r-xl last:border-none' +
                 (page === currentPage ? ' bg-[#f3f1f4]' : '')
               }
             >

@@ -6,8 +6,8 @@ const Logo = () => {
       <svg
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        height="29"
-        width="190"
+        height="50"
+        width="120"
         viewBox="0 0 207 29"
       >
         <path

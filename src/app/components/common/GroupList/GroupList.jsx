@@ -5,14 +5,14 @@ const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
   return (
     <div className="pb-8">
       <ul className="lg:flex w-auto text-lg font-medium text-gray-900">
-        <div className="lg:flex border-2 rounded-xl bg-white">
+        <div className="lg:flex border rounded-xl bg-white">
           <li
             onClick={() => {
               onClearFilter();
             }}
             role="button"
             className={
-              'flex justify-center p-3 px-4 align-middle lg:border-r-2 lg:border-b-0 border-b-2 lg:first:rounded-l-xl hover:text-red-700 bg-gray-200 hover:bg-gray-200' +
+              'flex justify-center p-3 px-4 align-middle lg:border-r lg:border-b-0 border-b lg:first:rounded-l-xl hover:text-red-700 bg-gray-200 hover:bg-gray-200' +
               (!selectedItem ? ' bg-gray-200' : '')
             }
           >
@@ -26,7 +26,7 @@ const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
               }}
               role="button"
               className={
-                'flex justify-center align-middle p-3 px-4 lg:border-r-2 lg:border-b-0 border-b-2 lg:last:rounded-r-xl last:border-none hover:text-red-700 hover:bg-[#f3f1f4] ' +
+                'flex justify-center align-middle p-3 px-4 lg:border-r lg:border-b-0 border-b lg:last:rounded-r-xl last:border-none hover:text-red-700 hover:bg-[#f3f1f4] ' +
                 (item === selectedItem ? ' bg-[#f3f1f4]' : '')
               }
             >
