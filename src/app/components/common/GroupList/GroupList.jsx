@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
   return (
     <div className="pb-8">
-      <ul className="lg:flex w-auto text-lg font-medium text-gray-900 bg-white">
-        <div className="lg:flex border-2 rounded-xl">
+      <ul className="lg:flex w-auto text-lg font-medium text-gray-900">
+        <div className="lg:flex border-2 rounded-xl bg-white">
           <li
             onClick={() => {
               onClearFilter();

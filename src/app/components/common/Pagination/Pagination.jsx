@@ -9,8 +9,8 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
 
   return (
     <nav className="pt-8">
-      <ul className="text-gray-900 lg:text-lg bg-white flex">
-        <div className="border-2 rounded-xl">
+      <ul className="flex text-gray-900 lg:text-lg">
+        <div className="border-2 rounded-xl bg-white">
           {pages.map((page) => (
             <button
               onClick={() => onPageChange(page)}
