@@ -3,7 +3,7 @@ import { useSneakers } from '../../../hooks/useSneakers';
 import { Link } from 'react-router-dom';
 
 const SearchQuery = () => {
-  const sneakers = useSneakers();
+  const { sneakers } = useSneakers();
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchQuery = ({ target }) => {

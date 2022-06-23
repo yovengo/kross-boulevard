@@ -7,7 +7,7 @@ import { useBrand } from '../../../hooks/useBrand';
 import { paginate } from '../../../utils/paginate';
 
 const SneakersListPage = () => {
-  const sneakers = useSneakers();
+  const { sneakers } = useSneakers();
   const { brands } = useBrand();
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedBrand, setSelectedBrand] = useState();

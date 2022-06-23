@@ -6,7 +6,7 @@ const Sneakers = () => {
   const params = useParams();
   const { sneakersId } = params;
 
-  return <>{sneakersId ? <SneakersPage /> : <SneakersListPage />}</>;
+  return <>{sneakersId ? <SneakersPage sneakersId={sneakersId} /> : <SneakersListPage />}</>;
 };
 
 export default Sneakers;

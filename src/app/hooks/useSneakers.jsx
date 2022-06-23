@@ -34,13 +34,17 @@ export const SneakersProvider = ({ children }) => {
     }
   }
 
+  function getSneakersById(sneakersId) {
+    return sneakers.find((u) => u._id === sneakersId);
+  }
+
   function errorCatcher(error) {
     const { message } = error.response.data;
     setError(message);
   }
 
   return (
-    <SneakersContext.Provider value={sneakers}>
+    <SneakersContext.Provider value={{ sneakers, getSneakersById }}>
       {!isLoading ? children : 'Loading...'}
     </SneakersContext.Provider>
   );
