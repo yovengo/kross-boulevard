@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 import { GroupList, Pagination, SortButton } from '../../common';
 import { SneakersTiles } from '../../ui';
 import { useSneakers } from '../../../hooks/useSneakers';
@@ -46,7 +47,10 @@ const SneakersListPage = () => {
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-14 mx-auto">
-        <h1 className="text-3xl text-gray-900 font-medium">Sneakers</h1>
+        <h1 className="text-2xl text-gray-900 font-medium">
+          <Link to="/">Home</Link> > <span className="text-gray-500">Sneakers</span>
+        </h1>
+
         {brands && (
           <div className="lg:flex justify-between py-8">
             <GroupList
