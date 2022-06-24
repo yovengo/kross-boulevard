@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
 import { useSneakers } from '../../../hooks/useSneakers';
 import { Brand, MaterialsList, Slider } from '../../ui';
@@ -18,63 +19,56 @@ const SneakersPage = ({ sneakersId }) => {
 
   if (sneakers && brand) {
     return (
-      <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container px-5 py-14 mx-auto">
-          <h1 className="text-2xl text-gray-900 font-medium">
+      <section className={styles.parent}>
+        <div className={styles.containerClass}>
+          <h1 className={styles.links}>
             <Link to="/">Home</Link> > <Link to="/sneakers">Sneakers</Link> >{' '}
-            <span className="text-gray-500">{sneakers.name}</span>
+            <span className={styles.activeLink}>{sneakers.name}</span>
           </h1>
-          <div className="lg:w-4/5 py-8 mx-auto flex flex-wrap">
+          <div className={styles.content}>
             <Slider images={sneakers.image} />
-            <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-              <h2 className="text-md title-font text-gray-500 tracking-widest">
+            <div className={styles.contentRight}>
+              <h2 className={styles.brandName}>
                 <Brand id={sneakers.brand} />
               </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                {sneakers.name}
-              </h1>
-              <div className="flex mb-4">
-                <span className="flex py-2">
-                  <a href={brand.officialSiteURL} className="text-gray-500" target="_blank">
-                    <img
-                      src="https://www.svgrepo.com/show/14443/home.svg"
-                      alt="Official site"
-                      className="w-5 h-5 opacity-50"
-                    />
-                  </a>
-                  <a href={brand.instagramURL} className="text-gray-500" target="_blank">
-                    <img
-                      src="https://cdn.worldvectorlogo.com/logos/instagram-glyph-1.svg"
-                      alt="Instagram"
-                      className="ml-2 w-5 h-5 opacity-50"
-                    />
-                  </a>
-                </span>
+              <h1 className={styles.sneakersName}>{sneakers.name}</h1>
+              <div className={styles.socialMediaContainer}>
+                <a href={brand.officialSiteURL} target="_blank">
+                  <img
+                    src="https://www.svgrepo.com/show/14443/home.svg"
+                    alt="Official site"
+                    className={styles.officialSiteIcon}
+                  />
+                </a>
+                <a href={brand.instagramURL} target="_blank">
+                  <img
+                    src="https://cdn.worldvectorlogo.com/logos/instagram-glyph-1.svg"
+                    alt="Instagram"
+                    className={styles.instagramIcon}
+                  />
+                </a>
               </div>
-              <p className="leading-relaxed">{sneakers.description}</p>
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                <div className="flex flex-col">
-                  <span className="mb-1">
+              <p className={styles.description}>{sneakers.description}</p>
+              <div className={styles.characteristicsContainer}>
+                <div className={styles.characteristicsInnerContainer}>
+                  <span className={styles.materials}>
                     Materials: <MaterialsList materials={sneakers.materials} />
                   </span>
-                  <span className="mt-1">
-                    Sex: <span className="px-2 ml-1 bg-gray-100 rounded-xl">{sneakers.sex}</span>
+                  <span className={styles.sex}>
+                    Sex: <span className={styles.sexContent}>{sneakers.sex}</span>
                   </span>
                 </div>
               </div>
-              <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-                <div className="flex items-center">
-                  <span className="mr-3">Sizes:</span>
-                  <div className="relative">
-                    <select
-                      role="button"
-                      className="rounded-xl border appearance-none border-gray-300 py-2 focus:outline-none text-base pl-3 pr-10 hover:bg-[#f3f1f4]"
-                    >
+              <div className={styles.sizesContainer}>
+                <div className={styles.sizesInnerContainer}>
+                  <span className={styles.sizesInscription}>Sizes:</span>
+                  <div className={styles.selectContainer}>
+                    <select role="button" className={styles.selectClass}>
                       {sneakers.sizes.map((s) => (
                         <option key={s}>{s}</option>
                       ))}
                     </select>
-                    <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                    <span className={styles.arrowIcon}>
                       <svg
                         fill="none"
                         stroke="currentColor"
@@ -90,13 +84,9 @@ const SneakersPage = ({ sneakersId }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex">
-                <span className="title-font font-medium text-2xl text-gray-900">
-                  {sneakers.price} &#8381;
-                </span>
-                <button className="flex ml-auto text-gray-900 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:text-red-700 rounded-xl">
-                  Add to cart
-                </button>
+              <div className={styles.priceAndBtnContainer}>
+                <span className={styles.price}>{sneakers.price} &#8381;</span>
+                <button className={styles.cartBtn}>Add to cart</button>
               </div>
             </div>
           </div>

@@ -1,0 +1,78 @@
+.parent {
+  @apply text-gray-600 overflow-hidden;
+  .containerClass {
+    @apply container px-5 py-14 mx-auto;
+    .links {
+      @apply text-2xl text-gray-900 font-medium;
+      .activeLink {
+        @apply text-gray-500;
+      }
+    }
+    .content {
+      @apply lg:w-4/5 py-8 mx-auto flex flex-wrap;
+      .contentRight {
+        @apply lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-12 lg:mt-0;
+        .brandName {
+          @apply text-lg text-gray-500 tracking-widest;
+        }
+        .sneakersName {
+          @apply text-gray-900 text-3xl font-medium mb-1;
+        }
+        .socialMediaContainer {
+          @apply flex mb-4 py-2;
+          .officialSiteIcon {
+            @apply w-5 h-5 opacity-50;
+          }
+          .instagramIcon {
+            @apply ml-2 w-5 h-5 opacity-50;
+          }
+        }
+        .description {
+          @apply leading-relaxed;
+        }
+        .characteristicsContainer {
+          @apply flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5;
+          .characteristicsInnerContainer {
+            @apply flex flex-col;
+            .materials {
+              @apply mb-1;
+            }
+            .sex {
+              @apply mt-1;
+              .sexContent {
+                @apply px-2 ml-1 bg-gray-100 rounded-xl;
+              }
+            }
+          }
+        }
+        .sizesContainer {
+          @apply flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5;
+          .sizesInnerContainer {
+            @apply flex items-center;
+            .sizesInscription {
+              @apply mr-3;
+            }
+            .selectContainer {
+              @apply relative;
+              .selectClass {
+                @apply rounded-xl border appearance-none border-gray-300 py-2 focus:outline-none text-base pl-3 pr-10 hover:bg-[#f3f1f4];
+              }
+              .arrowIcon {
+                @apply absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center;
+              }
+            }
+          }
+        }
+        .priceAndBtnContainer {
+          @apply flex;
+          .price {
+            @apply font-medium text-2xl text-gray-900;
+          }
+          .cartBtn {
+            @apply flex ml-auto text-gray-900 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:text-red-700 rounded-xl;
+          }
+        }
+      }
+    }
+  }
+}
