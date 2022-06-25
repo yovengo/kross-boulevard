@@ -24,7 +24,7 @@ const Login = () => {
         <div className="lg:w-2/6 md:w-1/2 bg-gray-100 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0">
           {formType === 'register' ? (
             <>
-              <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Register</h2>
+              <h2 className="text-gray-900 text-2xl font-medium title-font mb-5">Register</h2>
               <RegisterForm />
               <p className="text-xs text-gray-500 mt-3">
                 Already have account?{' '}
@@ -35,7 +35,7 @@ const Login = () => {
             </>
           ) : (
             <>
-              <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Login</h2>
+              <h2 className="text-gray-900 text-2xl font-medium title-font mb-5">Login</h2>
               <LoginForm />
               <p className="text-xs text-gray-500 mt-3">
                 Dont have account?{' '}

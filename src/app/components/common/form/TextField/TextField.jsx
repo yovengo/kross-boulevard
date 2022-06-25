@@ -1,20 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Eye from '../../../../assets/svg/Eye';
+import EyeOff from '../../../../assets/svg/EyeOff';
 
-const TextField = ({ label, type, name, value, onChange }) => {
+const TextField = ({ label, type, name, value, onChange, error }) => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleShowPassword = () => {
+    setShowPassword((prevState) => !prevState);
+  };
+
   return (
     <div className="relative mb-4">
-      <label htmlFor={name} className="leading-7 text-sm text-gray-600">
+      <label htmlFor={name} className="leading-7 text-gray-600">
         {label}
       </label>
-      <input
-        type={type}
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-      />
+      <div className="flex">
+        <input
+          type={showPassword ? 'text' : type}
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          className={
+            'w-full bg-white rounded border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8' +
+            (type === 'password' ? ' rounded-r-none' : '') +
+            (error ? ' border-red-700' : '')
+          }
+        />
+        {type === 'password' && (
+          <button
+            onClick={toggleShowPassword}
+            className={
+              'bg-white rounded-r border border-l-0 border-gray-300' +
+              (error ? ' border-red-700' : '')
+            }
+          >
+            {showPassword ? <EyeOff /> : <Eye />}
+          </button>
+        )}
+      </div>
+      {error ? <p className="text-sm text-red-700">{error}</p> : <p className="text-sm">&#8205;</p>}
     </div>
   );
 };
@@ -27,5 +53,6 @@ TextField.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  error: PropTypes.string,
 };
 export default TextField;
