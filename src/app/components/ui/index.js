@@ -6,3 +6,5 @@ export { SneakersTiles } from './SneakersTiles';
 export { Footer } from './Footer';
 export { SearchQuery } from './SearchQuery';
 export { Slider } from './Slider';
+export { LoginForm } from './LoginForm';
+export { RegisterForm } from './RegisterForm';

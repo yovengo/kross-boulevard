@@ -37,7 +37,7 @@ const Header = () => {
             <SearchQuery />
             <div className="lg:block hidden">
               <Link
-                to="/signup"
+                to="/login"
                 className="py-2.5 px-4 text-gray-900 text-lg font-medium bg-gray-200 hover:text-red-700 rounded-xl"
               >
                 Login
