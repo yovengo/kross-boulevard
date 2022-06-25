@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,8 @@ import { Brand, MaterialsList, Slider } from '../../ui';
 import { useBrand } from '../../../hooks/useBrand';
 
 const SneakersPage = ({ sneakersId }) => {
+  const [data, setData] = useState();
+
   const { getSneakersById } = useSneakers();
   const sneakers = getSneakersById(sneakersId);
 
@@ -16,6 +18,18 @@ const SneakersPage = ({ sneakersId }) => {
   useEffect(() => {
     window.scroll(0, 0);
   }, []);
+
+  const handleChange = ({ target }) => {
+    setData({
+      ...sneakers,
+      sizes: target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(data);
+  };
 
   if (sneakers && brand) {
     return (
@@ -59,35 +73,49 @@ const SneakersPage = ({ sneakersId }) => {
                   </span>
                 </div>
               </div>
-              <div className={styles.sizesContainer}>
-                <div className={styles.sizesInnerContainer}>
-                  <span className={styles.sizesInscription}>Sizes:</span>
-                  <div className={styles.selectContainer}>
-                    <select role="button" className={styles.selectClass}>
-                      {sneakers.sizes.map((s) => (
-                        <option key={s}>{s}</option>
-                      ))}
-                    </select>
-                    <span className={styles.arrowIcon}>
-                      <svg
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        className="w-4 h-4"
-                        viewBox="0 0 24 24"
+              <form onSubmit={handleSubmit}>
+                <div className={styles.sizesContainer}>
+                  <div className={styles.sizesInnerContainer}>
+                    <span className={styles.sizesInscription}>Sizes:</span>
+                    <div className={styles.selectContainer}>
+                      <select
+                        onChange={handleChange}
+                        defaultValue="0"
+                        role="button"
+                        className={styles.selectClass}
                       >
-                        <path d="M6 9l6 6 6-6" />
-                      </svg>
-                    </span>
+                        <option disabled value="0">
+                          Choose...
+                        </option>
+                        {sneakers.sizes.map((s) => (
+                          <option key={s} value={s}>
+                            {s}
+                          </option>
+                        ))}
+                      </select>
+                      <span className={styles.arrowIcon}>
+                        <svg
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          className="w-4 h-4"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className={styles.priceAndBtnContainer}>
-                <span className={styles.price}>{sneakers.price} &#8381;</span>
-                <button className={styles.cartBtn}>Add to cart</button>
-              </div>
+                <div className={styles.priceAndBtnContainer}>
+                  <span className={styles.price}>{sneakers.price} &#8381;</span>
+                  <button className={styles.cartBtn} disabled={!data}>
+                    Add to cart
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
