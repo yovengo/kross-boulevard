@@ -6,6 +6,10 @@ import EyeOff from '../../../../assets/svg/EyeOff';
 const TextField = ({ label, type, name, value, onChange, error }) => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const handleChange = ({ target }) => {
+    onChange({ name: target.name, value: target.value });
+  };
+
   const toggleShowPassword = () => {
     setShowPassword((prevState) => !prevState);
   };
@@ -21,7 +25,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
           id={name}
           name={name}
           value={value}
-          onChange={onChange}
+          onChange={handleChange}
           className={
             'w-full bg-white rounded border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8' +
             (type === 'password' ? ' rounded-r-none' : '') +

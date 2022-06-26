@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
-import { TextField } from '../../common/form';
+import { CheckBoxField, TextField } from '../../common/form';
 
 const RegisterForm = () => {
-  const [data, setData] = useState({ email: '', password: '', name: '' });
+  const [data, setData] = useState({ email: '', password: '', name: '', licence: false });
   const [errors, setErrors] = useState({});
 
-  const handleChange = ({ target }) => {
+  const handleChange = (target) => {
     setData((prevState) => ({
       ...prevState,
       [target.name]: target.value,
@@ -14,6 +14,7 @@ const RegisterForm = () => {
   };
 
   const validateScheme = yup.object().shape({
+    licence: yup.boolean().oneOf([true], 'The Terms & Conditions must be accepted.'),
     password: yup
       .string()
       .required('Password is required')
@@ -73,6 +74,17 @@ const RegisterForm = () => {
         onChange={handleChange}
         error={errors.password}
       />
+      <CheckBoxField
+        value={data.licence}
+        onChange={handleChange}
+        name="licence"
+        error={errors.licence}
+      >
+        I Agree with the{' '}
+        <a href="#" className="font-medium">
+          Terms & Conditions
+        </a>
+      </CheckBoxField>
       <button
         type="submit"
         disabled={!isValid}
