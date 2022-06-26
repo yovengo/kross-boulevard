@@ -34,6 +34,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
         />
         {type === 'password' && (
           <button
+            type="button"
             onClick={toggleShowPassword}
             className={
               'bg-white rounded-r border border-l-0 border-gray-300' +
