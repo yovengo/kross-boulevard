@@ -19,7 +19,7 @@ const CheckBoxField = ({ name, value, onChange, children, error }) => {
       <label htmlFor={name} className="ml-2 text-base text-gray-700 leading-8">
         {children}
       </label>
-      {error ? <p className="text-sm text-red-700">{error}</p> : <p className="text-sm">&#8205;</p>}
+      {error && <p className="text-sm text-red-700">{error}</p>}
     </div>
   );
 };

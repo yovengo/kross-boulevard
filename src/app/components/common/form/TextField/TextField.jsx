@@ -44,7 +44,7 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
           </button>
         )}
       </div>
-      {error ? <p className="text-sm text-red-700">{error}</p> : <p className="text-sm">&#8205;</p>}
+      {error && <p className="text-sm text-red-700">{error}</p>}
     </div>
   );
 };

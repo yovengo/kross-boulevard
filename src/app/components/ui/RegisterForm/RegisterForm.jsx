@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { CheckBoxField, TextField } from '../../common/form';
+import { useAuth } from '../../../hooks/useAuth';
+import { useHistory } from 'react-router-dom';
 
 const RegisterForm = () => {
+  const history = useHistory();
+
   const [data, setData] = useState({ email: '', password: '', name: '', licence: false });
   const [errors, setErrors] = useState({});
+
+  const { signUp } = useAuth();
 
   const handleChange = (target) => {
     setData((prevState) => ({
@@ -20,10 +26,6 @@ const RegisterForm = () => {
       .required('Password is required')
       .matches(/(?=.*[A-Z])/, 'Password must contain at least one capital letter')
       .matches(/(?=.*\d)/, 'Password must contain at least one number')
-      .matches(
-        /(?=.*[!@#$%^&*])/,
-        'The password must contain one of the special characters !@#$%^&*'
-      )
       .matches(/(?=.{8,})/, 'Password must be at least 8 characters long'),
     name: yup.string().required('Full name is required'),
     email: yup.string().required('Email is required').email('Email entered incorrectly'),
@@ -43,11 +45,17 @@ const RegisterForm = () => {
 
   const isValid = Object.keys(errors).length === 0;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validate();
     if (!isValid) return;
-    console.log(data);
+
+    try {
+      await signUp(data);
+      history.push('/');
+    } catch (error) {
+      setErrors(error);
+    }
   };
 
   return (

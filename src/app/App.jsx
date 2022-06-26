@@ -10,27 +10,30 @@ import { Footer, Header } from './components/ui';
 import { BrandProvider } from './hooks/useBrand';
 import { MaterialProvider } from './hooks/useMaterials';
 import { SneakersProvider } from './hooks/useSneakers';
+import AuthProvider from './hooks/useAuth';
 
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
-      <SneakersProvider>
-        <Header />
-        <div className="flex-grow">
-          <MaterialProvider>
-            <BrandProvider>
-              <Switch>
-                <Route path="/sneakers/:sneakersId?" component={Sneakers} />
-                <Route path="/login/:type?" component={Login} />
-                <Route path="/init" component={DataInit} />
-                <Route path="/" component={Main} />
-                <Redirect to="/" />
-              </Switch>
-            </BrandProvider>
-          </MaterialProvider>
-        </div>
-        <Footer />
-      </SneakersProvider>
+      <AuthProvider>
+        <SneakersProvider>
+          <Header />
+          <div className="flex-grow">
+            <MaterialProvider>
+              <BrandProvider>
+                <Switch>
+                  <Route path="/sneakers/:sneakersId?" component={Sneakers} />
+                  <Route path="/login/:type?" component={Login} />
+                  <Route path="/init" component={DataInit} />
+                  <Route path="/" component={Main} />
+                  <Redirect to="/" />
+                </Switch>
+              </BrandProvider>
+            </MaterialProvider>
+          </div>
+          <Footer />
+        </SneakersProvider>
+      </AuthProvider>
     </div>
   );
 }

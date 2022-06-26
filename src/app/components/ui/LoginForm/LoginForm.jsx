@@ -1,16 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { TextField } from '../../common/form';
+import { useAuth } from '../../../hooks/useAuth';
+import { useHistory } from 'react-router-dom';
 
 const LoginForm = () => {
+  const history = useHistory();
+
   const [data, setData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
+  const [enterError, setEnterError] = useState(null);
+
+  const { signIn } = useAuth();
 
   const handleChange = (target) => {
     setData((prevState) => ({
       ...prevState,
       [target.name]: target.value,
     }));
+    setEnterError(null);
   };
 
   const validateScheme = yup.object().shape({
@@ -32,11 +40,16 @@ const LoginForm = () => {
 
   const isValid = Object.keys(errors).length === 0;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const isValid = validate();
     if (!isValid) return;
-    console.log(data);
+    try {
+      await signIn(data);
+      history.push('/');
+    } catch (error) {
+      setEnterError(error.message);
+    }
   };
 
   return (
@@ -56,10 +69,14 @@ const LoginForm = () => {
         onChange={handleChange}
         error={errors.password}
       />
-
+      {enterError ? (
+        <p className="mb-1 text-sm text-red-700">{enterError}</p>
+      ) : (
+        <p className="mb-1 text-sm">&#8205;</p>
+      )}
       <button
         type="submit"
-        disabled={!isValid}
+        disabled={!isValid || enterError}
         className="w-full text-white bg-red-600 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg disabled:bg-gray-300"
       >
         Sign In
