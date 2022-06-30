@@ -11,6 +11,7 @@ import { BrandProvider } from './hooks/useBrand';
 import { MaterialProvider } from './hooks/useMaterials';
 import { SneakersProvider } from './hooks/useSneakers';
 import AuthProvider from './hooks/useAuth';
+import LogOut from './layouts/LogOut';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                   <Route path="/sneakers/:sneakersId?" component={Sneakers} />
                   <Route path="/login/:type?" component={Login} />
                   <Route path="/init" component={DataInit} />
+                  <Route path="/logout" component={LogOut} />
                   <Route path="/" component={Main} />
                   <Redirect to="/" />
                 </Switch>

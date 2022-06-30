@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import userService from '../services/user.service';
 import localStorageService, { setTokens } from '../services/localStorage.service';
+import { useHistory } from 'react-router-dom';
 
 export const httpAuth = axios.create({
   baseURL: 'https://identitytoolkit.googleapis.com/v1/',
@@ -17,6 +18,8 @@ export const useAuth = () => {
 const AuthProvider = ({ children }) => {
   const [currentUser, setUser] = useState();
   const [error, setError] = useState(null);
+
+  const history = useHistory();
 
   useEffect(() => {
     if (error !== null) {
@@ -82,6 +85,12 @@ const AuthProvider = ({ children }) => {
     }
   }
 
+  function logOut() {
+    localStorageService.removeAuthData();
+    setUser(null);
+    history.push('/');
+  }
+
   async function createUser(data) {
     try {
       const { content } = await userService.create(data);
@@ -97,7 +106,9 @@ const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ signUp, signIn, currentUser }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ signUp, signIn, currentUser, logOut }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 AuthProvider.propTypes = {

@@ -7,7 +7,7 @@ import { useAuth } from '../../../hooks/useAuth';
 const ProfileDropDown = (props) => {
   const { currentUser } = useAuth();
   const [state, setState] = useState(false);
-  const navigation = [{ title: 'Log out', path: '/' }];
+  const navigation = [{ title: 'Log Out', path: '/logout' }];
 
   return (
     <div className={`relative ${props.class}`}>
