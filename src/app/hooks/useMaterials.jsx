@@ -26,7 +26,7 @@ export const MaterialProvider = ({ children }) => {
 
   async function getMaterialsList() {
     try {
-      const { content } = await materialService.get();
+      const { content } = await materialService.fetchAll();
       setMaterials(content);
       setLoading(false);
     } catch (error) {
