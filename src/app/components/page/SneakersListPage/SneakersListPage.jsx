@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom';
 import { GroupList, Pagination, SortButton } from '../../common';
 import { SneakersTiles } from '../../ui';
 import { useSneakers } from '../../../hooks/useSneakers';
-import { useBrand } from '../../../hooks/useBrand';
 import { paginate } from '../../../utils/paginate';
+import { useSelector } from 'react-redux';
+import { getBrands } from '../../../store/brands';
 
 const SneakersListPage = () => {
   const { sneakers } = useSneakers();
-  const { brands } = useBrand();
+  const brands = useSelector(getBrands());
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedBrand, setSelectedBrand] = useState();
   const [sortBy, setSortBy] = useState({ iter: 'name', order: 'asc' });

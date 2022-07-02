@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useBrand } from '../../../hooks/useBrand';
+import { useSelector } from 'react-redux';
+import { getBrandById, getBrandsLoadingStatus } from '../../../store/brands';
 
 const Brand = ({ id }) => {
-  const { isLoading, getBrand } = useBrand();
-  const brand = getBrand(id);
+  const isLoading = useSelector(getBrandsLoadingStatus());
+  const brand = useSelector(getBrandById(id));
 
   if (!isLoading) {
     return <span>{brand.name}</span>;

@@ -4,7 +4,8 @@ import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
 import { useSneakers } from '../../../hooks/useSneakers';
 import { Brand, MaterialsList, Slider } from '../../ui';
-import { useBrand } from '../../../hooks/useBrand';
+import { useSelector } from 'react-redux';
+import { getBrandById } from '../../../store/brands';
 
 const SneakersPage = ({ sneakersId }) => {
   const [data, setData] = useState();
@@ -12,8 +13,7 @@ const SneakersPage = ({ sneakersId }) => {
   const { getSneakersById } = useSneakers();
   const sneakers = getSneakersById(sneakersId);
 
-  const { getBrand } = useBrand();
-  const brand = getBrand(sneakers.brand);
+  const brand = useSelector(getBrandById(sneakers.brand));
 
   useEffect(() => {
     window.scroll(0, 0);
