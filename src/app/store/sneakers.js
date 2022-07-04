@@ -7,6 +7,7 @@ const sneakersSlice = createSlice({
     entities: null,
     isLoading: true,
     error: null,
+    dataLoaded: false,
   },
   reducers: {
     sneakersRequested: (state) => {
@@ -14,6 +15,7 @@ const sneakersSlice = createSlice({
     },
     sneakersReceived: (state, action) => {
       state.entities = action.payload;
+      state.dataLoaded = true;
       state.isLoading = false;
     },
     sneakersRequestFailed: (state, action) => {
@@ -41,5 +43,6 @@ export const getSneakersLoadingStatus = () => (state) => state.sneakers.isLoadin
 export const getSneakersById = (sneakersId) => (state) => {
   return state.sneakers.entities.find((s) => s._id === sneakersId);
 };
+export const getDataStatus = () => (state) => state.sneakers.dataLoaded;
 
 export default sneakersReducer;

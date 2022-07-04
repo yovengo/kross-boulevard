@@ -17,7 +17,7 @@ const SearchQuery = () => {
     setSearchQuery('');
   };
 
-  if (isLoading) return 'Loading...';
+  if (isLoading) return '';
 
   const filteredSneakers = sneakers.filter(
     (s) => s.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1

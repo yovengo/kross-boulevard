@@ -2,53 +2,55 @@ import { useState } from 'react';
 import { SearchQuery } from '../SearchQuery';
 import Logo from '../../../assets/svg/Logo';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../../hooks/useAuth';
+import { useSelector } from 'react-redux';
+import { getCurrentUser, getIsLoggedIn } from '../../../store/users';
 
 const ProfileDropDown = (props) => {
-  const { currentUser } = useAuth();
+  const currentUser = useSelector(getCurrentUser());
   const [state, setState] = useState(false);
   const navigation = [{ title: 'Log Out', path: '/logout' }];
-
-  return (
-    <div className={`relative ${props.class}`}>
-      <div className="flex items-center space-x-4">
-        <button
-          className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-1 lg:focus:ring-red-700"
-          onClick={() => setState(!state)}
-        >
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/149/149452.png"
-            alt="user image"
-            className="w-full h-full rounded-full"
-          />
-        </button>
-        <div className="lg:hidden">
-          <span className="block">{currentUser.name}</span>
-          <span className="block text-sm text-gray-500">{currentUser.email}</span>
+  if (currentUser) {
+    return (
+      <div className={`relative ${props.class}`}>
+        <div className="flex items-center space-x-4">
+          <button
+            className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-1 lg:focus:ring-red-700"
+            onClick={() => setState(!state)}
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/149/149452.png"
+              alt="user image"
+              className="w-full h-full rounded-full"
+            />
+          </button>
+          <div className="lg:hidden">
+            <span className="block">{currentUser.name}</span>
+            <span className="block text-sm text-gray-500">{currentUser.email}</span>
+          </div>
         </div>
+        <ul
+          className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${
+            state ? '' : 'lg:hidden'
+          }`}
+        >
+          {navigation.map((item, index) => (
+            <li key={index}>
+              <Link
+                className="block text-gray-900 hover:text-red-700 lg:hover:bg-gray-50 lg:p-2.5"
+                to={item.path}
+              >
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-      <ul
-        className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${
-          state ? '' : 'lg:hidden'
-        }`}
-      >
-        {navigation.map((item, index) => (
-          <li key={index}>
-            <Link
-              className="block text-gray-900 hover:text-red-700 lg:hover:bg-gray-50 lg:p-2.5"
-              to={item.path}
-            >
-              {item.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    );
+  } else return '';
 };
 
 const Header = () => {
-  const { currentUser } = useAuth();
+  const isLoggedIn = useSelector(getIsLoggedIn());
 
   const [menuState, setMenuState] = useState(false);
 
@@ -78,7 +80,7 @@ const Header = () => {
                 </li>
               ))}
             </ul>
-            {currentUser ? (
+            {isLoggedIn ? (
               <ProfileDropDown class="mt-10 pt-5 border-t lg:hidden" />
             ) : (
               <button className="w-full mt-5 pt-2 pb-2 bg-gray-200 rounded-xl lg:hidden">
@@ -90,7 +92,7 @@ const Header = () => {
           </div>
           <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
             <SearchQuery />
-            {currentUser ? (
+            {isLoggedIn ? (
               <ProfileDropDown class="hidden lg:block" />
             ) : (
               <button className="hidden lg:block">

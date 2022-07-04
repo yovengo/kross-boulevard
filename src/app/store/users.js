@@ -4,15 +4,25 @@ import authService from '../services/auth.service';
 import localStorageService from '../services/localStorage.service';
 import history from '../utils/history';
 
+const initialState = localStorageService.getAccessToken()
+  ? {
+      entities: null,
+      isLoading: true,
+      error: null,
+      auth: { userId: localStorageService.getUserId() },
+      isLoggedIn: true,
+    }
+  : {
+      entities: null,
+      isLoading: false,
+      error: null,
+      auth: null,
+      isLoggedIn: false,
+    };
+
 const usersSlice = createSlice({
   name: 'users',
-  initialState: {
-    entities: null,
-    isLoading: true,
-    error: null,
-    auth: null,
-    isLoggedIn: false,
-  },
+  initialState,
   reducers: {
     usersRequested: (state) => {
       state.isLoading = true;
@@ -38,6 +48,11 @@ const usersSlice = createSlice({
       }
       state.entities.push(action.payload);
     },
+    userLoggedOut: (state) => {
+      state.entities = null;
+      state.isLoggedIn = false;
+      state.auth = null;
+    },
   },
 });
 
@@ -49,6 +64,7 @@ const {
   authRequestSuccess,
   authRequestFailed,
   userCreated,
+  userLoggedOut,
 } = actions;
 
 const authRequested = createAction('users/authRequested');
@@ -95,6 +111,12 @@ export const signUp =
     }
   };
 
+export const logOut = () => (dispatch) => {
+  localStorageService.removeAuthData();
+  dispatch(userLoggedOut());
+  history.push('/');
+};
+
 export const loadUsersList = () => async (dispatch) => {
   dispatch(usersRequested());
   try {
@@ -106,5 +128,8 @@ export const loadUsersList = () => async (dispatch) => {
 };
 
 export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
+export const getUsersLoadingStatus = () => (state) => state.users.isLoading;
+export const getCurrentUser = () => (state) =>
+  state.users.entities ? state.users.entities.find((u) => u._id === state.users.auth.userId) : null;
 
 export default usersReducer;

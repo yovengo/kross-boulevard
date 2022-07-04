@@ -1,12 +1,19 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { SneakersListPage, SneakersPage } from '../components/page';
+import SneakersLoader from '../components/ui/hoc/SneakersLoader';
 
 const Sneakers = () => {
   const params = useParams();
   const { sneakersId } = params;
 
-  return <>{sneakersId ? <SneakersPage sneakersId={sneakersId} /> : <SneakersListPage />}</>;
+  return (
+    <>
+      <SneakersLoader>
+        {sneakersId ? <SneakersPage sneakersId={sneakersId} /> : <SneakersListPage />}
+      </SneakersLoader>
+    </>
+  );
 };
 
 export default Sneakers;
