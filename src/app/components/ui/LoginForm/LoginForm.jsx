@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { TextField } from '../../common/form';
-import { useAuth } from '../../../hooks/useAuth';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../../../store/users';
 
 const LoginForm = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [data, setData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [enterError, setEnterError] = useState(null);
-
-  const { signIn } = useAuth();
 
   const handleChange = (target) => {
     setData((prevState) => ({
@@ -40,16 +40,12 @@ const LoginForm = () => {
 
   const isValid = Object.keys(errors).length === 0;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validate();
     if (!isValid) return;
-    try {
-      await signIn(data);
-      history.push('/');
-    } catch (error) {
-      setEnterError(error.message);
-    }
+    const redirect = history.location.state ? history.location.state.from.pathname : '/';
+    dispatch(signIn({ payload: data, redirect }));
   };
 
   return (

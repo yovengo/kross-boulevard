@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux';
 import { loadMaterialsList } from './store/materials';
 import { loadBrandsList } from './store/brands';
 import { loadSneakersList } from './store/sneakers';
+import { loadUsersList } from './store/users';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
     dispatch(loadMaterialsList());
     dispatch(loadBrandsList());
     dispatch(loadSneakersList());
+    dispatch(loadUsersList());
   }, []);
 
   return (
