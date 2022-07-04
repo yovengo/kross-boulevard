@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
-import { useSneakers } from '../../../hooks/useSneakers';
 import { Brand, MaterialsList, Slider } from '../../ui';
 import { useSelector } from 'react-redux';
 import { getBrandById } from '../../../store/brands';
+import { getSneakersById } from '../../../store/sneakers';
 
 const SneakersPage = ({ sneakersId }) => {
   const [data, setData] = useState();
 
-  const { getSneakersById } = useSneakers();
-  const sneakers = getSneakersById(sneakersId);
-
+  const sneakers = useSelector(getSneakersById(sneakersId));
   const brand = useSelector(getBrandById(sneakers.brand));
 
   useEffect(() => {

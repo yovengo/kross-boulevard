@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { useSneakers } from '../../../hooks/useSneakers';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getSneakers, getSneakersLoadingStatus } from '../../../store/sneakers';
 
 const SearchQuery = () => {
-  const { sneakers } = useSneakers();
+  const sneakers = useSelector(getSneakers());
+  const isLoading = useSelector(getSneakersLoadingStatus());
+
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearchQuery = ({ target }) => {
@@ -13,6 +16,8 @@ const SearchQuery = () => {
   const handleClearSearchQuery = () => {
     setSearchQuery('');
   };
+
+  if (isLoading) return 'Loading...';
 
   const filteredSneakers = sneakers.filter(
     (s) => s.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1
