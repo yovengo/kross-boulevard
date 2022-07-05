@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
@@ -8,8 +8,6 @@ import { getBrandById } from '../../../store/brands';
 import { getSneakersById } from '../../../store/sneakers';
 
 const SneakersPage = ({ sneakersId }) => {
-  const [data, setData] = useState();
-
   const sneakers = useSelector(getSneakersById(sneakersId));
   const brand = useSelector(getBrandById(sneakers.brand));
 
@@ -17,16 +15,9 @@ const SneakersPage = ({ sneakersId }) => {
     window.scroll(0, 0);
   }, []);
 
-  const handleChange = ({ target }) => {
-    setData({
-      ...sneakers,
-      sizes: target.value,
-    });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(data);
+    console.log(sneakers._id);
   };
 
   if (sneakers && brand) {
@@ -76,17 +67,9 @@ const SneakersPage = ({ sneakersId }) => {
                   <div className={styles.sizesInnerContainer}>
                     <span className={styles.sizesInscription}>Sizes:</span>
                     <div className={styles.selectContainer}>
-                      <select
-                        onChange={handleChange}
-                        defaultValue="0"
-                        role="button"
-                        className={styles.selectClass}
-                      >
-                        <option disabled value="0">
-                          Choose...
-                        </option>
-                        {sneakers.sizes.map((s) => (
-                          <option key={s} value={s}>
+                      <select defaultValue="0" role="button" className={styles.selectClass}>
+                        {sneakers.sizes.map((s, i) => (
+                          <option disabled key={s} value={i}>
                             {s}
                           </option>
                         ))}
@@ -109,9 +92,7 @@ const SneakersPage = ({ sneakersId }) => {
                 </div>
                 <div className={styles.priceAndBtnContainer}>
                   <span className={styles.price}>{sneakers.price} &#8381;</span>
-                  <button className={styles.cartBtn} disabled={!data}>
-                    Add to cart
-                  </button>
+                  <button className={styles.cartBtn}>Add to cart</button>
                 </div>
               </form>
             </div>

@@ -9,6 +9,7 @@ import Sneakers from './layouts/Sneakers';
 import { Footer, Header } from './components/ui';
 import LogOut from './layouts/LogOut';
 import AppLoader from './components/ui/hoc/AppLoader';
+import Cart from './layouts/Cart';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Switch>
             <Route path="/sneakers/:sneakersId?" component={Sneakers} />
             <Route path="/login/:type?" component={Login} />
+            <Route path="/cart" component={Cart} />
             <Route path="/init" component={DataInit} />
             <Route path="/logout" component={LogOut} />
             <Route path="/" component={Main} />

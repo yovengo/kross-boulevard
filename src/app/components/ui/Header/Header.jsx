@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { SearchQuery } from '../SearchQuery';
 import Logo from '../../../assets/svg/Logo';
+import Cart from '../../../assets/svg/Cart';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getCurrentUser, getIsLoggedIn } from '../../../store/users';
@@ -83,7 +84,12 @@ const Header = () => {
               ))}
             </ul>
             {isLoggedIn ? (
-              <ProfileDropDown class="mt-10 pt-5 border-t lg:hidden" />
+              <>
+                <Link to="/cart" className="flex lg:hidden mt-4 justify-center">
+                  <Cart />
+                </Link>
+                <ProfileDropDown class="mt-5 pt-5 border-t lg:hidden" />
+              </>
             ) : (
               <button className="w-full mt-5 pt-2 pb-2 bg-gray-200 rounded-xl lg:hidden">
                 <Link to="/login" className="text-gray-900 text-lg font-medium hover:text-red-700">
@@ -95,7 +101,12 @@ const Header = () => {
           <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
             <SearchQuery />
             {isLoggedIn ? (
-              <ProfileDropDown class="hidden lg:block" />
+              <>
+                <Link to="/cart" className="hidden lg:block">
+                  <Cart />
+                </Link>
+                <ProfileDropDown class="hidden lg:block" />
+              </>
             ) : (
               <button className="hidden lg:block">
                 <Link
