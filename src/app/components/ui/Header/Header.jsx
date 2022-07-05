@@ -7,9 +7,11 @@ import { getCurrentUser, getIsLoggedIn } from '../../../store/users';
 
 const ProfileDropDown = (props) => {
   const currentUser = useSelector(getCurrentUser());
+  const isLoggedIn = useSelector(getIsLoggedIn());
+
   const [state, setState] = useState(false);
   const navigation = [{ title: 'Log Out', path: '/logout' }];
-  if (currentUser) {
+  if (isLoggedIn && currentUser) {
     return (
       <div className={`relative ${props.class}`}>
         <div className="flex items-center space-x-4">

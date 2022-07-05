@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { TextField } from '../../common/form';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { signIn } from '../../../store/users';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuthError, signIn } from '../../../store/users';
 
 const LoginForm = () => {
   const history = useHistory();
@@ -11,14 +11,13 @@ const LoginForm = () => {
 
   const [data, setData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
-  const [enterError, setEnterError] = useState(null);
+  const loginError = useSelector(getAuthError());
 
   const handleChange = (target) => {
     setData((prevState) => ({
       ...prevState,
       [target.name]: target.value,
     }));
-    setEnterError(null);
   };
 
   const validateScheme = yup.object().shape({
@@ -65,14 +64,14 @@ const LoginForm = () => {
         onChange={handleChange}
         error={errors.password}
       />
-      {enterError ? (
-        <p className="mb-1 text-sm text-red-700">{enterError}</p>
+      {loginError ? (
+        <p className="mb-1 text-sm text-red-700">{loginError}</p>
       ) : (
         <p className="mb-1 text-sm">&#8205;</p>
       )}
       <button
         type="submit"
-        disabled={!isValid || enterError}
+        disabled={!isValid}
         className="w-full text-white bg-red-600 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg disabled:bg-gray-300"
       >
         Sign In
