@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { SearchQuery } from '../SearchQuery';
 import Logo from '../../../assets/svg/Logo';
-import Cart from '../../../assets/svg/Cart';
+import CartIcon from '../../../assets/svg/CartIcon';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getCurrentUser, getIsLoggedIn } from '../../../store/users';
@@ -86,7 +86,7 @@ const Header = () => {
             {isLoggedIn ? (
               <>
                 <Link to="/cart" className="flex lg:hidden mt-4 justify-center">
-                  <Cart />
+                  <CartIcon />
                 </Link>
                 <ProfileDropDown class="mt-5 pt-5 border-t lg:hidden" />
               </>
@@ -103,7 +103,7 @@ const Header = () => {
             {isLoggedIn ? (
               <>
                 <Link to="/cart" className="hidden lg:block">
-                  <Cart />
+                  <CartIcon />
                 </Link>
                 <ProfileDropDown class="hidden lg:block" />
               </>

@@ -3,11 +3,18 @@ import PropTypes from 'prop-types';
 import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
 import { Brand, MaterialsList, Slider } from '../../ui';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getBrandById } from '../../../store/brands';
 import { getSneakersById } from '../../../store/sneakers';
+import { getCartData, getCurrentUser, updateUserData } from '../../../store/users';
 
 const SneakersPage = ({ sneakersId }) => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(getCurrentUser());
+  const currentCart = useSelector(getCartData());
+
+  console.log(currentCart);
+
   const sneakers = useSelector(getSneakersById(sneakersId));
   const brand = useSelector(getBrandById(sneakers.brand));
 
@@ -17,7 +24,13 @@ const SneakersPage = ({ sneakersId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(sneakers._id);
+    const cartValue = !currentCart ? [sneakersId] : [...currentCart, sneakersId];
+    dispatch(
+      updateUserData({
+        ...currentUser,
+        cart: cartValue,
+      })
+    );
   };
 
   if (sneakers && brand) {

@@ -43,6 +43,21 @@ export const getSneakersLoadingStatus = () => (state) => state.sneakers.isLoadin
 export const getSneakersById = (sneakersId) => (state) => {
   return state.sneakers.entities.find((s) => s._id === sneakersId);
 };
+export const getSneakersByIds = (sneakersIds) => (state) => {
+  if (state.sneakers.entities && sneakersIds) {
+    const sneakersArray = [];
+    for (const sneakId of sneakersIds) {
+      for (const sneakers of state.sneakers.entities) {
+        if (sneakers._id === sneakId) {
+          sneakersArray.push(sneakers);
+          break;
+        }
+      }
+    }
+    return sneakersArray;
+  }
+  return [];
+};
 export const getDataStatus = () => (state) => state.sneakers.dataLoaded;
 
 export default sneakersReducer;
