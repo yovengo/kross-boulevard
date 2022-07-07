@@ -1,12 +1,15 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { getCartData } from '../store/users';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCartData, getCurrentUser, updateUserData } from '../store/users';
 import { getSneakersByIds } from '../store/sneakers';
 import { Brand } from '../components/ui';
 
 const Cart = () => {
+  const dispatch = useDispatch();
+
+  const currentUser = useSelector(getCurrentUser());
   const currentCart = useSelector(getCartData());
   const sneakers = useSelector(getSneakersByIds(currentCart));
 
@@ -14,13 +17,31 @@ const Cart = () => {
   const shippingCost = subtotal < 8500 && subtotal > 0 ? 750 : 0;
   const orderTotal = subtotal + shippingCost;
 
+  console.log(currentCart);
+
+  const handleRemoveCartItem = (id) => {
+    const updatedCurrentCart = [...currentCart];
+    const indexOfCartItem = updatedCurrentCart.findIndex((i) => i === id);
+    updatedCurrentCart.splice(indexOfCartItem, 1);
+
+    dispatch(
+      updateUserData({
+        ...currentUser,
+        cart: updatedCurrentCart,
+      })
+    );
+  };
+
   return (
     <section className="text-gray-600 body-font overflow-hidden">
       <div className="container md:flex md:flex-row px-5 py-24 mx-auto">
         <div className="-my-8 md:w-4/6 divide-y-2 divide-gray-100">
           {sneakers.length !== 0 ? (
             sneakers.map((s) => (
-              <div key={s._id} className="py-8 flex flex-wrap md:flex-nowrap">
+              <div
+                key={s._id + Math.random().toString()}
+                className="py-8 flex flex-wrap md:flex-nowrap"
+              >
                 <img
                   src={s.image[0]}
                   alt="sneakers"
@@ -76,7 +97,12 @@ const Cart = () => {
                   <h2 className="text-xl font-medium text-gray-900 title-font mb-2">
                     {s.price}&nbsp;&#8381;
                   </h2>
-                  <button className="text-red-700 underline">Remove</button>
+                  <button
+                    onClick={() => handleRemoveCartItem(s._id)}
+                    className="text-red-700 underline"
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
             ))

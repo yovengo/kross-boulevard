@@ -4,7 +4,7 @@ import Logo from '../../../assets/svg/Logo';
 import CartIcon from '../../../assets/svg/CartIcon';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getCurrentUser, getIsLoggedIn } from '../../../store/users';
+import { getCartData, getCurrentUser, getIsLoggedIn } from '../../../store/users';
 
 const ProfileDropDown = (props) => {
   const currentUser = useSelector(getCurrentUser());
@@ -36,6 +36,10 @@ const ProfileDropDown = (props) => {
             state ? '' : 'lg:hidden'
           }`}
         >
+          <li className="lg:block hidden text-gray-900 lg:pl-2.5 lg:pt-2.5">{currentUser.name}</li>
+          <li className="lg:block hidden text-sm text-gray-500 lg:pl-2.5 lg:pb-2.5 border-b">
+            {currentUser.email}
+          </li>
           {navigation.map((item, index) => (
             <li key={index}>
               <Link
@@ -54,6 +58,7 @@ const ProfileDropDown = (props) => {
 
 const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn());
+  const currentCart = useSelector(getCartData());
 
   const [menuState, setMenuState] = useState(false);
 
@@ -85,8 +90,13 @@ const Header = () => {
             </ul>
             {isLoggedIn ? (
               <>
-                <Link to="/cart" className="flex lg:hidden mt-4 justify-center">
+                <Link to="/cart" className="flex lg:hidden mt-4 justify-center items-center">
                   <CartIcon />
+                  {currentCart && (
+                    <div className="text-white text-xs bg-red-700 px-1.5 rounded-full">
+                      {currentCart.length}
+                    </div>
+                  )}
                 </Link>
                 <ProfileDropDown class="mt-5 pt-5 border-t lg:hidden" />
               </>
@@ -104,6 +114,11 @@ const Header = () => {
               <>
                 <Link to="/cart" className="hidden lg:block">
                   <CartIcon />
+                  {currentCart && (
+                    <div className="absolute right-24 top-10 text-white text-xs bg-red-700 px-1.5 rounded-full">
+                      {currentCart.length}
+                    </div>
+                  )}
                 </Link>
                 <ProfileDropDown class="hidden lg:block" />
               </>

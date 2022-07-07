@@ -50,7 +50,7 @@ const SearchQuery = () => {
         />
       </form>
       {searchQuery.length !== 0 && filteredSneakers.length !== 0 && (
-        <div className="absolute top-[3.6rem] w-[14.3rem] h-40 border rounded-xl bg-white overflow-y-scroll">
+        <div className="absolute top-[3.6rem] w-[14.3rem] max-h-40 border rounded-xl bg-white overflow-y-auto">
           <ul>
             {filteredSneakers.slice(0, 8).map((item) => {
               return (
@@ -60,7 +60,7 @@ const SearchQuery = () => {
                   className="border-b last:border-none hover:bg-[#f3f1f4] hover:text-red-700 first:rounded-t-xl last:rounded-b-xl"
                 >
                   <Link to={`/sneakers/${item._id}`}>
-                    <li className="flex justify-start py-2 px-1">{item.name}</li>
+                    <li className="flex justify-start py-2 px-2.5">{item.name}</li>
                   </Link>
                 </div>
               );

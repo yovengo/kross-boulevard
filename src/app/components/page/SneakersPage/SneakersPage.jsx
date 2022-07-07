@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
@@ -6,17 +6,18 @@ import { Brand, MaterialsList, Slider } from '../../ui';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBrandById } from '../../../store/brands';
 import { getSneakersById } from '../../../store/sneakers';
-import { getCartData, getCurrentUser, updateUserData } from '../../../store/users';
+import { getCartData, getCurrentUser, getIsLoggedIn, updateUserData } from '../../../store/users';
 
 const SneakersPage = ({ sneakersId }) => {
   const dispatch = useDispatch();
   const currentUser = useSelector(getCurrentUser());
   const currentCart = useSelector(getCartData());
-
-  console.log(currentCart);
+  const isLoggedIn = useSelector(getIsLoggedIn());
 
   const sneakers = useSelector(getSneakersById(sneakersId));
   const brand = useSelector(getBrandById(sneakers.brand));
+
+  const [buttonState, setButtonState] = useState(false);
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -25,12 +26,15 @@ const SneakersPage = ({ sneakersId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const cartValue = !currentCart ? [sneakersId] : [...currentCart, sneakersId];
+    cartValue.sort();
+
     dispatch(
       updateUserData({
         ...currentUser,
         cart: cartValue,
       })
     );
+    setButtonState(true);
   };
 
   if (sneakers && brand) {
@@ -105,8 +109,27 @@ const SneakersPage = ({ sneakersId }) => {
                 </div>
                 <div className={styles.priceAndBtnContainer}>
                   <span className={styles.price}>{sneakers.price} &#8381;</span>
-                  <button className={styles.cartBtn}>Add to cart</button>
+                  {!buttonState ? (
+                    <button type="submit" disabled={!isLoggedIn} className={styles.cartBtn}>
+                      Add to cart
+                    </button>
+                  ) : (
+                    <Link to="/cart" className={styles.cartBtnAdded}>
+                      <p>
+                        {' '}
+                        Added to <span className="underline hover:text-red-700">cart</span>
+                      </p>
+                    </Link>
+                  )}
                 </div>
+                {!isLoggedIn && (
+                  <p className="text-red-600">
+                    <Link to="/login" className="underline hover:text-red-700">
+                      Login
+                    </Link>{' '}
+                    before shopping
+                  </p>
+                )}
               </form>
             </div>
           </div>
