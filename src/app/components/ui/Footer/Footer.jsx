@@ -1,53 +1,36 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styles from './Footer.module.scss';
 import Logo from '../../../assets/svg/Logo';
+import { GitHub, Instagram, Telegram } from '../../../assets/svg';
 
 const Footer = () => {
   return (
-    <footer className="text-gray-600 body-font">
-      <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
-        <Link
-          to="/"
-          className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900"
-        >
+    <footer className={styles.parent}>
+      <div className={styles.mainContainer}>
+        <Link to="/" className={styles.logo}>
           <Logo />
         </Link>
-        <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+        <p className={styles.trademark}>
           © 2022 KrossBoulevard —
           <a
             href="https://github.com/yovengo"
-            className="text-gray-600 ml-1"
+            className={styles.personalPage}
             rel="noopener noreferrer"
             target="_blank"
           >
             @yovengo
           </a>
         </p>
-        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <span className={styles.rightContent}>
           <a href="https://t.me/yovengowo" target="_blank">
-            <img
-              src="https://cdn.worldvectorlogo.com/logos/telegram-1.svg"
-              alt="Telegram"
-              className="w-5 h-5 grayscale"
-            />
+            <Telegram />
           </a>
-          <a href="https://github.com/yovengo" className="ml-3" target="_blank">
-            <img
-              src="https://cdn.worldvectorlogo.com/logos/github-icon-1.svg"
-              alt="GitHub"
-              className="w-5 h-5 opacity-50"
-            />
+          <a href="https://github.com/yovengo" className={styles.githubLink} target="_blank">
+            <GitHub />
           </a>
-          <a
-            href="https://www.instagram.com/glhf.ognevoy/"
-            className="ml-3 text-gray-500"
-            target="_blank"
-          >
-            <img
-              src="https://cdn.worldvectorlogo.com/logos/instagram-glyph-1.svg"
-              alt="Instagram"
-              className="w-5 h-5 opacity-50"
-            />
+          <a href="https://www.instagram.com/glhf.ognevoy/" className={styles.instLink} target="_blank">
+            <Instagram />
           </a>
         </span>
       </div>

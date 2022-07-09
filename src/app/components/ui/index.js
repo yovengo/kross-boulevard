@@ -8,3 +8,4 @@ export { SearchQuery } from './SearchQuery';
 export { Slider } from './Slider';
 export { LoginForm } from './LoginForm';
 export { RegisterForm } from './RegisterForm';
+export { ProfileDropDown } from './ProfileDropDown';

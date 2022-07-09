@@ -1,0 +1,33 @@
+.parent {
+  @apply text-gray-600;
+  .mainContainer {
+    @apply container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col;
+    .logo {
+      @apply flex items-center md:justify-start justify-center;
+    }
+    .trademark {
+      @apply text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4;
+      .personalPage {
+        @apply text-gray-600 ml-1;
+      }
+    }
+    .rightContent {
+      @apply inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start;
+      .telegramImg {
+        @apply w-5 h-5 grayscale;
+      }
+      .githubLink {
+        @apply ml-3;
+        .githubImg {
+          @apply w-5 h-5 opacity-50;
+        }
+      }
+      .instLink {
+        @apply ml-3 text-gray-500;
+        .instImg {
+          @apply w-5 h-5 opacity-50;
+        }
+      }
+    }
+  }
+}

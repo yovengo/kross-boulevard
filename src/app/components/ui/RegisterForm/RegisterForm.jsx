@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
+import styles from './RegisterForm.module.scss';
+
 import { CheckBoxField, TextField } from '../../common/form';
+
 import { useDispatch } from 'react-redux';
 import { signUp } from '../../../store/users';
 
@@ -52,20 +55,8 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
-        label="Email"
-        name="email"
-        value={data.email}
-        onChange={handleChange}
-        error={errors.email}
-      />
-      <TextField
-        label="Full name"
-        name="name"
-        value={data.name}
-        onChange={handleChange}
-        error={errors.name}
-      />
+      <TextField label="Email" name="email" value={data.email} onChange={handleChange} error={errors.email} />
+      <TextField label="Full name" name="name" value={data.name} onChange={handleChange} error={errors.name} />
       <TextField
         label="Password"
         type="password"
@@ -74,22 +65,13 @@ const RegisterForm = () => {
         onChange={handleChange}
         error={errors.password}
       />
-      <CheckBoxField
-        value={data.licence}
-        onChange={handleChange}
-        name="licence"
-        error={errors.licence}
-      >
+      <CheckBoxField value={data.licence} onChange={handleChange} name="licence" error={errors.licence}>
         I Agree with the{' '}
-        <a href="#" className="font-medium">
+        <a href="#" className={styles.termsAndConditions}>
           Terms & Conditions
         </a>
       </CheckBoxField>
-      <button
-        type="submit"
-        disabled={!isValid}
-        className="w-full text-white bg-red-600 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg disabled:bg-gray-300"
-      >
+      <button type="submit" disabled={!isValid} className={styles.registerBtn}>
         Register
       </button>
     </form>

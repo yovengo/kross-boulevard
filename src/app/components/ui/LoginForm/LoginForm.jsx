@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
-import { TextField } from '../../common/form';
 import { useHistory } from 'react-router-dom';
+import styles from './LoginForm.module.scss';
+
+import { TextField } from '../../common/form';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthError, signIn } from '../../../store/users';
 
@@ -49,13 +52,7 @@ const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <TextField
-        label="Email"
-        name="email"
-        value={data.email}
-        onChange={handleChange}
-        error={errors.email}
-      />
+      <TextField label="Email" name="email" value={data.email} onChange={handleChange} error={errors.email} />
       <TextField
         label="Password"
         type="password"
@@ -64,16 +61,8 @@ const LoginForm = () => {
         onChange={handleChange}
         error={errors.password}
       />
-      {loginError ? (
-        <p className="mb-1 text-sm text-red-700">{loginError}</p>
-      ) : (
-        <p className="mb-1 text-sm">&#8205;</p>
-      )}
-      <button
-        type="submit"
-        disabled={!isValid}
-        className="w-full text-white bg-red-600 border-0 py-2 px-8 focus:outline-none hover:bg-red-700 rounded text-lg disabled:bg-gray-300"
-      >
+      {loginError ? <p className={styles.error}>{loginError}</p> : <p className={styles.emptyParagraph}>&#8205;</p>}
+      <button type="submit" disabled={!isValid} className={styles.signInBtn}>
         Sign In
       </button>
     </form>

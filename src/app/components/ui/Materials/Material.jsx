@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Material.module.scss';
 
 const Material = ({ _id, name }) => {
   return (
-    <span key={_id} className="px-2 ml-1 bg-gray-100 rounded-xl">
+    <span key={_id} className={styles.material}>
       {name}{' '}
     </span>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Eye from '../../../../assets/svg/Eye';
-import EyeOff from '../../../../assets/svg/EyeOff';
+import styles from './TextField.module.scss';
+import { Eye, EyeOff } from '../../../../assets/svg';
 
 const TextField = ({ label, type, name, value, onChange, error }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,37 +15,31 @@ const TextField = ({ label, type, name, value, onChange, error }) => {
   };
 
   return (
-    <div className="relative mb-4">
-      <label htmlFor={name} className="leading-7 text-gray-600">
+    <div className={styles.parent}>
+      <label htmlFor={name} className={styles.label}>
         {label}
       </label>
-      <div className="flex">
+      <div className={styles.inputContainer}>
         <input
           type={showPassword ? 'text' : type}
           id={name}
           name={name}
           value={value}
           onChange={handleChange}
-          className={
-            'w-full bg-white rounded border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8' +
-            (type === 'password' ? ' rounded-r-none' : '') +
-            (error ? ' border-red-700' : '')
-          }
+          className={`
+            ${styles.input} ${type === 'password' && styles.input__password} ${error && styles.input_error}`}
         />
         {type === 'password' && (
           <button
             type="button"
             onClick={toggleShowPassword}
-            className={
-              'bg-white rounded-r border border-l-0 border-gray-300' +
-              (error ? ' border-red-700' : '')
-            }
+            className={`${styles.eyeBtn} ${error && styles.eyeBtn_error}`}
           >
             {showPassword ? <EyeOff /> : <Eye />}
           </button>
         )}
       </div>
-      {error && <p className="text-sm text-red-700">{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
     </div>
   );
 };

@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './GroupList.module.scss';
 
 const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
   return (
-    <ul className="lg:flex w-auto text-lg font-medium text-gray-900">
-      <div className="lg:flex border rounded-xl bg-white">
+    <ul className={styles.parent}>
+      <div className={styles.itemsContainer}>
         <li
           onClick={() => {
             onClearFilter();
           }}
           role="button"
-          className={
-            'flex justify-center align-middle p-3 px-4  lg:border-r lg:border-b-0 border-b lg:first:rounded-l-xl hover:text-red-700 bg-gray-200 hover:bg-gray-200' +
-            (!selectedItem ? ' bg-gray-200' : '')
-          }
+          className={`${styles.firstItem} ${!selectedItem && styles.firstItem_selected}`}
         >
           AllBrands
         </li>
@@ -24,10 +22,7 @@ const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
               onItemSelect(item);
             }}
             role="button"
-            className={
-              'flex justify-center align-middle p-3 px-4 lg:border-r lg:border-b-0 border-b lg:last:rounded-r-xl last:border-none hover:text-red-700 hover:bg-[#f3f1f4] ' +
-              (item === selectedItem ? ' bg-[#f3f1f4]' : '')
-            }
+            className={`${styles.item} ${item === selectedItem && styles.item_selected}`}
           >
             {item.name}
           </li>

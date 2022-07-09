@@ -1,0 +1,30 @@
+.parent {
+  @apply flex flex-wrap -m-4;
+  .mainContainer {
+    @apply lg:w-1/4 md:w-1/2 p-4 w-full;
+    .secondaryContainer {
+      @apply border-2 bg-[#f3f1f4] rounded-xl pt-24;
+      .imgContainer {
+        @apply block relative h-48 rounded overflow-hidden;
+        .img {
+          @apply object-cover object-center w-full h-full block;
+        }
+      }
+      .content {
+        @apply pt-4 pl-4 pb-4;
+        .brandMainContainer {
+          @apply text-gray-500 text-sm tracking-widest mb-1;
+          .brandSecondaryContainer {
+            @apply bg-gray-200 px-1 py-0.5;
+          }
+        }
+        .name {
+          @apply text-gray-900 hover:text-red-700 transition-colors lg:text-lg font-medium;
+        }
+        .price {
+          @apply mt-1;
+        }
+      }
+    }
+  }
+}

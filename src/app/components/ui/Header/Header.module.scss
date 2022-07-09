@@ -1,0 +1,57 @@
+.parent {
+  @apply bg-white shadow-sm;
+  .mainContainer {
+    @apply flex items-center space-x-8 py-3 px-10 mx-auto;
+    .logoContainer {
+      @apply flex-none lg:flex-initial;
+    }
+    .hiddenContainer {
+      @apply flex-1 flex items-center justify-between;
+      .hiddenMenu {
+        @apply bg-white absolute z-20 w-full top-16 left-0 p-2 border-b lg:static lg:block lg:border-none;
+      }
+      .hiddenNavContainer {
+        @apply mt-4 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0;
+        .hiddenNavItem {
+          @apply text-gray-900 hover:text-red-700;
+        }
+      }
+      .hiddenCartLink {
+        @apply flex lg:hidden mt-4 justify-center items-center;
+        .hiddenCartItemsCounter {
+          @apply text-white text-xs bg-red-700 px-1.5 rounded-full;
+        }
+      }
+      .hiddenProfileDropDown {
+        @apply mt-5 pt-5 border-t lg:hidden;
+      }
+      .hiddenLoginBtn {
+        @apply w-full mt-5 pt-2 pb-2 bg-gray-200 rounded-xl lg:hidden;
+        .hiddenLoginLink {
+          @apply text-gray-900 text-lg font-medium hover:text-red-700;
+        }
+      }
+    }
+    .secondaryContainer {
+      @apply flex-1 flex items-center justify-end space-x-2 sm:space-x-6;
+      .cartLink {
+        @apply hidden lg:block;
+        .cartItemsCounter {
+          @apply absolute right-24 top-10 text-white text-xs bg-red-700 px-1.5 rounded-full;
+        }
+      }
+      .profileDropDown {
+        @apply hidden lg:block;
+      }
+      .loginBtn {
+        @apply hidden lg:block;
+        .loginLink {
+          @apply py-2.5 px-4 text-gray-900 text-lg font-medium bg-gray-200 hover:text-red-700 rounded-xl;
+        }
+      }
+      .setMenuBtn {
+        @apply outline-none text-gray-400 block lg:hidden;
+      }
+    }
+  }
+}

@@ -1,15 +1,10 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
-import Main from './layouts/Main';
-import Login from './layouts/Login';
-import DataInit from './layouts/DataInit';
-import Sneakers from './layouts/Sneakers';
-
 import { Footer, Header } from './components/ui';
-import LogOut from './layouts/LogOut';
+import { Cart, DataInit, Login, LogOut, Main, Sneakers } from './layouts';
+
 import AppLoader from './components/ui/hoc/AppLoader';
-import Cart from './layouts/Cart';
 import ProtectedRoute from './components/ui/hoc/ProtectedRoute';
 
 function App() {

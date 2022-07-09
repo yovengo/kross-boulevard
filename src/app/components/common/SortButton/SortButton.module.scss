@@ -1,0 +1,6 @@
+.parent {
+  @apply text-gray-900 pt-8 lg:pt-0 ml-0 lg:ml-8;
+  .select {
+    @apply w-full p-3 px-4 text-lg font-medium bg-white border rounded-xl outline-none appearance-none hover:bg-gray-100;
+  }
+}

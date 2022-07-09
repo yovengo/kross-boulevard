@@ -1,60 +1,14 @@
-import { useState } from 'react';
-import { SearchQuery } from '../SearchQuery';
-import Logo from '../../../assets/svg/Logo';
-import CartIcon from '../../../assets/svg/CartIcon';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import styles from './Header.module.scss';
+
+import { SearchQuery } from '../SearchQuery';
+import { ProfileDropDown } from '../ProfileDropDown';
+import { CartIcon, Cross, DropDownIcon, Logo } from '../../../assets/svg';
+
 import { useSelector } from 'react-redux';
-import { getCartData, getCurrentUser, getIsLoggedIn } from '../../../store/users';
-
-const ProfileDropDown = (props) => {
-  const currentUser = useSelector(getCurrentUser());
-  const isLoggedIn = useSelector(getIsLoggedIn());
-
-  const [state, setState] = useState(false);
-  const navigation = [{ title: 'Log Out', path: '/logout' }];
-  if (isLoggedIn && currentUser) {
-    return (
-      <div className={`relative ${props.class}`}>
-        <div className="flex items-center space-x-4">
-          <button
-            className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-1 lg:focus:ring-red-700"
-            onClick={() => setState(!state)}
-          >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/149/149452.png"
-              alt="user image"
-              className="w-full h-full rounded-full"
-            />
-          </button>
-          <div className="lg:hidden">
-            <span className="block">{currentUser.name}</span>
-            <span className="block text-sm text-gray-500">{currentUser.email}</span>
-          </div>
-        </div>
-        <ul
-          className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 ${
-            state ? '' : 'lg:hidden'
-          }`}
-        >
-          <li className="lg:block hidden text-gray-900 lg:pl-2.5 lg:pt-2.5">{currentUser.name}</li>
-          <li className="lg:block hidden text-sm text-gray-500 lg:pl-2.5 lg:pb-2.5 border-b">
-            {currentUser.email}
-          </li>
-          {navigation.map((item, index) => (
-            <li key={index}>
-              <Link
-                className="block text-gray-900 hover:text-red-700 lg:hover:bg-gray-50 lg:p-2.5"
-                to={item.path}
-              >
-                {item.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  } else return '';
-};
+import { getCartData, getIsLoggedIn } from '../../../store/users';
+import PropTypes from 'prop-types';
 
 const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn());
@@ -68,111 +22,66 @@ const Header = () => {
     { title: 'Init', path: '/init' },
   ];
   return (
-    <nav className="bg-white shadow-sm">
-      <div className="flex items-center space-x-8 py-3 px-10 mx-auto">
-        <div className="flex-none lg:flex-initial">
+    <nav className={styles.parent}>
+      <div className={styles.mainContainer}>
+        <div className={styles.logoContainer}>
           <Link to="/">
             <Logo />
           </Link>
         </div>
-        <div className="flex-1 flex items-center justify-between">
-          <div
-            className={`bg-white absolute z-20 w-full top-16 left-0 p-2 border-b lg:static lg:block lg:border-none ${
-              menuState ? '' : 'hidden'
-            }`}
-          >
-            <ul className="mt-4 space-y-5 lg:flex lg:space-x-6 lg:space-y-0 lg:mt-0">
+        <div className={styles.hiddenContainer}>
+          <div className={`${styles.hiddenMenu} ${!menuState && 'hidden'}`}>
+            <ul className={styles.hiddenNavContainer}>
               {navigation.map((item, index) => (
-                <li key={index} className="text-gray-900 hover:text-red-700">
+                <li key={index} className={styles.hiddenNavItem}>
                   <Link to={item.path}>{item.title}</Link>
                 </li>
               ))}
             </ul>
             {isLoggedIn ? (
               <>
-                <Link to="/cart" className="flex lg:hidden mt-4 justify-center items-center">
+                <Link to="/cart" className={styles.hiddenCartLink}>
                   <CartIcon />
-                  {currentCart && (
-                    <div className="text-white text-xs bg-red-700 px-1.5 rounded-full">
-                      {currentCart.length}
-                    </div>
-                  )}
+                  {currentCart && <div className={styles.hiddenCartItemsCounter}>{currentCart.length}</div>}
                 </Link>
-                <ProfileDropDown class="mt-5 pt-5 border-t lg:hidden" />
+                <ProfileDropDown class={styles.hiddenProfileDropDown} />
               </>
             ) : (
-              <button className="w-full mt-5 pt-2 pb-2 bg-gray-200 rounded-xl lg:hidden">
-                <Link to="/login" className="text-gray-900 text-lg font-medium hover:text-red-700">
+              <button className={styles.hiddenLoginBtn}>
+                <Link to="/login" className={styles.hiddenLoginLink}>
                   Login
                 </Link>
               </button>
             )}
           </div>
-          <div className="flex-1 flex items-center justify-end space-x-2 sm:space-x-6">
+          <div className={styles.secondaryContainer}>
             <SearchQuery />
             {isLoggedIn ? (
               <>
-                <Link to="/cart" className="hidden lg:block">
+                <Link to="/cart" className={styles.cartLink}>
                   <CartIcon />
-                  {currentCart && (
-                    <div className="absolute right-24 top-10 text-white text-xs bg-red-700 px-1.5 rounded-full">
-                      {currentCart.length}
-                    </div>
-                  )}
+                  {currentCart && <div className={styles.cartItemsCounter}>{currentCart.length}</div>}
                 </Link>
-                <ProfileDropDown class="hidden lg:block" />
+                <ProfileDropDown class={styles.profileDropDown} />
               </>
             ) : (
-              <button className="hidden lg:block">
-                <Link
-                  to="/login"
-                  className="py-2.5 px-4 text-gray-900 text-lg font-medium bg-gray-200 hover:text-red-700 rounded-xl"
-                >
+              <button className={styles.loginBtn}>
+                <Link to="/login" className={styles.loginLink}>
                   Login
                 </Link>
               </button>
             )}
 
-            <button
-              className="outline-none text-gray-400 block lg:hidden"
-              onClick={() => setMenuState(!menuState)}
-            >
-              {menuState ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16m-7 6h7"
-                  />
-                </svg>
-              )}
+            <button className={styles.setMenuBtn} onClick={() => setMenuState(!menuState)}>
+              {menuState ? <Cross /> : <DropDownIcon />}
             </button>
           </div>
         </div>
       </div>
     </nav>
   );
+};
+Header.propTypes = {
+  currentCart: PropTypes.any,
 };
 export default Header;

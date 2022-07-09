@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './SneakersPage.module.scss';
 import { Link } from 'react-router-dom';
+import styles from './SneakersPage.module.scss';
+
 import { Brand, MaterialsList, Slider } from '../../ui';
+import { Arrow } from '../../../assets/svg';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { getBrandById } from '../../../store/brands';
 import { getSneakersById } from '../../../store/sneakers';
@@ -40,10 +43,10 @@ const SneakersPage = ({ sneakersId }) => {
   if (sneakers && brand) {
     return (
       <section className={styles.parent}>
-        <div className={styles.containerClass}>
-          <h1 className={styles.links}>
+        <div className={styles.mainContainer}>
+          <h1 className={styles.pathHeading}>
             <Link to="/">Home</Link> > <Link to="/sneakers">Sneakers</Link> >{' '}
-            <span className={styles.activeLink}>{sneakers.name}</span>
+            <span className={styles.selectedPath}>{sneakers.name}</span>
           </h1>
           <div className={styles.content}>
             <Slider images={sneakers.image} />
@@ -74,8 +77,8 @@ const SneakersPage = ({ sneakersId }) => {
                   <span className={styles.materials}>
                     Materials: <MaterialsList materials={sneakers.materials} />
                   </span>
-                  <span className={styles.sex}>
-                    Sex: <span className={styles.sexContent}>{sneakers.sex}</span>
+                  <span className={styles.sexContainer}>
+                    Sex: <span className={styles.sex}>{sneakers.sex}</span>
                   </span>
                 </div>
               </div>
@@ -84,7 +87,7 @@ const SneakersPage = ({ sneakersId }) => {
                   <div className={styles.sizesInnerContainer}>
                     <span className={styles.sizesInscription}>Sizes:</span>
                     <div className={styles.selectContainer}>
-                      <select defaultValue="0" role="button" className={styles.selectClass}>
+                      <select defaultValue="0" role="button" className={styles.select}>
                         {sneakers.sizes.map((s, i) => (
                           <option disabled key={s} value={i}>
                             {s}
@@ -92,17 +95,7 @@ const SneakersPage = ({ sneakersId }) => {
                         ))}
                       </select>
                       <span className={styles.arrowIcon}>
-                        <svg
-                          fill="none"
-                          stroke="currentColor"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          className="w-4 h-4"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M6 9l6 6 6-6" />
-                        </svg>
+                        <Arrow />
                       </span>
                     </div>
                   </div>
@@ -117,14 +110,14 @@ const SneakersPage = ({ sneakersId }) => {
                     <Link to="/cart" className={styles.cartBtnAdded}>
                       <p>
                         {' '}
-                        Added to <span className="underline hover:text-red-700">cart</span>
+                        Added to <span className={styles.cartInscription}>cart</span>
                       </p>
                     </Link>
                   )}
                 </div>
                 {!isLoggedIn && (
-                  <p className="text-red-600">
-                    <Link to="/login" className="underline hover:text-red-700">
+                  <p className={styles.notice}>
+                    <Link to="/login" className={styles.loginLink}>
                       Login
                     </Link>{' '}
                     before shopping
@@ -136,8 +129,6 @@ const SneakersPage = ({ sneakersId }) => {
         </div>
       </section>
     );
-  } else {
-    return 'Loading...';
   }
 };
 SneakersPage.propTypes = {

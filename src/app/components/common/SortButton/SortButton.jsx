@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './SortButton.module.scss';
 
 const SortButton = ({ onSort }) => {
   return (
-    <div className="text-gray-900 pt-8 lg:pt-0">
-      <select
-        onChange={onSort}
-        role="button"
-        className="w-full p-3 px-4 text-lg font-medium bg-white border rounded-xl outline-none appearance-none hover:bg-[#f3f1f4]"
-      >
+    <div className={styles.parent}>
+      <select onChange={onSort} role="button" className={styles.select}>
         <option value="name asc">Sort by name (A-Z)</option>
         <option value="name desc">Sort by name (Z-A)</option>
         <option value="price asc">Price low to high</option>

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import styles from './Pagination.module.scss';
 
 const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   const pageCount = Math.ceil(itemsCount / pageSize);
@@ -8,17 +9,14 @@ const Pagination = ({ itemsCount, pageSize, currentPage, onPageChange }) => {
   const pages = _.range(1, pageCount + 1);
 
   return (
-    <nav className="pt-8">
-      <ul className="flex text-gray-900 lg:text-lg">
-        <div className="border rounded-xl bg-white">
+    <nav className={styles.parent}>
+      <ul className={styles.mainContainer}>
+        <div className={styles.itemsContainer}>
           {pages.map((page) => (
             <button
               onClick={() => onPageChange(page)}
               key={'page_' + page}
-              className={
-                'p-3 px-4 hover:text-red-700 hover:bg-[#f3f1f4] transition-colors border-r first:rounded-l-xl last:rounded-r-xl last:border-none' +
-                (page === currentPage ? ' bg-[#f3f1f4]' : '')
-              }
+              className={`${styles.btn} ${page === currentPage && styles.btn_selected}`}
             >
               <li>{page}</li>
             </button>

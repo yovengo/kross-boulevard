@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
+import styles from './SneakersListPage.module.scss';
+
 import { GroupList, Pagination, SortButton } from '../../common';
 import { SneakersTiles } from '../../ui';
 import { paginate } from '../../../utils/paginate';
+
 import { useSelector } from 'react-redux';
 import { getBrands, getBrandsLoadingStatus } from '../../../store/brands';
 import { getSneakers, getSneakersLoadingStatus } from '../../../store/sneakers';
@@ -43,22 +46,20 @@ const SneakersListPage = () => {
 
   if (sneakers && !sneakersLoading) {
     const pageSize = 16;
-    const filteredSneakers = selectedBrand
-      ? sneakers.filter((s) => s.brand === selectedBrand?._id)
-      : sneakers;
+    const filteredSneakers = selectedBrand ? sneakers.filter((s) => s.brand === selectedBrand?._id) : sneakers;
     const count = filteredSneakers.length;
     const sortedSneakers = _.orderBy(filteredSneakers, sortBy.iter, sortBy.order);
     const sneakersCrop = paginate(sortedSneakers, currentPage, pageSize);
 
     return (
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-14 mx-auto">
-          <h1 className="text-2xl text-gray-900 font-medium">
-            <Link to="/">Home</Link> > <span className="text-gray-500">Sneakers</span>
+      <section className={styles.parent}>
+        <div className={styles.mainContainer}>
+          <h1 className={styles.pathHeading}>
+            <Link to="/">Home</Link> > <span className={styles.selectedPath}>Sneakers</span>
           </h1>
 
           {brands && !brandsLoading && (
-            <div className="lg:flex justify-between py-8">
+            <div className={styles.navTabContainer}>
               <GroupList
                 items={brands}
                 selectedItem={selectedBrand}
@@ -80,7 +81,8 @@ const SneakersListPage = () => {
         </div>
       </section>
     );
-  } else return 'Loading...';
+  }
+  return null;
 };
 
 export default SneakersListPage;

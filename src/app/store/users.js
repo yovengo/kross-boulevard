@@ -58,8 +58,7 @@ const usersSlice = createSlice({
       state.error = null;
     },
     userUpdated: (state, action) => {
-      state.entities[state.entities.findIndex((u) => u._id === action.payload._id)] =
-        action.payload;
+      state.entities[state.entities.findIndex((u) => u._id === action.payload._id)] = action.payload;
     },
   },
 });
@@ -160,8 +159,6 @@ export const getCurrentUser = () => (state) =>
   state.users.entities ? state.users.entities.find((u) => u._id === state.users.auth.userId) : null;
 export const getAuthError = () => (state) => state.users.error;
 export const getCartData = () => (state) =>
-  state.users.entities
-    ? state.users.entities.find((u) => u._id === state.users.auth.userId).cart
-    : null;
+  state.users.entities ? state.users.entities.find((u) => u._id === state.users.auth.userId).cart : null;
 
 export default usersReducer;
