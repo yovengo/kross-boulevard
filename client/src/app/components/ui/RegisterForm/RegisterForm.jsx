@@ -67,7 +67,7 @@ const RegisterForm = () => {
       />
       <CheckBoxField value={data.licence} onChange={handleChange} name="licence" error={errors.licence}>
         I Agree with the{' '}
-        <a href="#" className={styles.termsAndConditions}>
+        <a href="client/src/app/components/ui/RegisterForm/RegisterForm#" className={styles.termsAndConditions}>
           Terms & Conditions
         </a>
       </CheckBoxField>

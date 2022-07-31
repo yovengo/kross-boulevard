@@ -12,6 +12,7 @@ const ProfileDropDown = (props) => {
 
   const [state, setState] = useState(false);
   const navigation = [{ title: 'Log Out', path: '/logout' }];
+
   if (isLoggedIn && currentUser) {
     return (
       <div className={`${styles.parent} ${props.class}`}>
