@@ -1,0 +1,15 @@
+.parent {
+  @apply text-gray-600;
+  .mainContainer {
+    @apply container px-5 py-14 mx-auto;
+    .pathHeading {
+      @apply text-2xl text-gray-900 font-medium;
+      .selectedPath {
+        @apply text-gray-500;
+      }
+    }
+    .navTabContainer {
+      @apply lg:flex justify-between py-8;
+    }
+  }
+}

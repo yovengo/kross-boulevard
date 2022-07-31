@@ -1,0 +1,6 @@
+.swiper {
+  @apply lg:w-1/2 rounded;
+  .img {
+    @apply w-full lg:h-auto h-64 object-cover object-center;
+  }
+}

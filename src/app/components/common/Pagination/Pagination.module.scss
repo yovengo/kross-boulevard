@@ -1,0 +1,15 @@
+.parent {
+  @apply pt-8;
+  .mainContainer {
+    @apply flex text-gray-900 lg:text-lg;
+    .itemsContainer {
+      @apply border rounded-xl bg-white;
+      .btn {
+        @apply p-3 px-4 hover:text-red-700 hover:bg-gray-100 transition-colors border-r first:rounded-l-xl last:rounded-r-xl last:border-none;
+        &_selected {
+          @apply bg-gray-100;
+        }
+      }
+    }
+  }
+}
