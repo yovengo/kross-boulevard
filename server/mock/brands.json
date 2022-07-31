@@ -1,0 +1,58 @@
+[
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b01",
+    "name": "Adidas",
+    "officialSiteURL": "https://www.adidas.com",
+    "instagramURL": "https://www.instagram.com/adidas/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/adidas-9.svg"
+  },
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b02",
+    "name": "ASICS",
+    "officialSiteURL": "https://www.asics.com",
+    "instagramURL": "https://www.instagram.com/asics/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/asics-6.svg"
+  },
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b03",
+    "name": "Converse",
+    "officialSiteURL": "https://www.converse.com/country-language-selector",
+    "instagramURL": "https://www.instagram.com/converse/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/converse-logo-1.svg"
+  },
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b04",
+    "name": "Jordan",
+    "officialSiteURL": "https://www.nike.com/jordan",
+    "instagramURL": "https://www.instagram.com/jumpman23/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/jordan-2.svg"
+  },
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b05",
+    "name": "Nike",
+    "officialSiteURL": "https://www.nike.com",
+    "instagramURL": "https://www.instagram.com/nike/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/nike-11.svg"
+  },
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b06",
+    "name": "PUMA",
+    "officialSiteURL": "https://puma.com",
+    "instagramURL": "https://www.instagram.com/puma/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/puma-logo.svg"
+  },
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b07",
+    "name": "Reebok",
+    "officialSiteURL": "https://www.reebok.com",
+    "instagramURL": "https://www.instagram.com/reebok/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/reebok-2019-logo.svg"
+  },
+  {
+    "_id": "21b20b5880ed49eaa9156849f6967b08",
+    "name": "Vans",
+    "officialSiteURL": "https://www.vans.com",
+    "instagramURL": "https://www.instagram.com/vans/?hl=en",
+    "icon": "https://cdn.worldvectorlogo.com/logos/vans-5.svg"
+  }
+]
