@@ -11,6 +11,7 @@ const schema = new Schema(
       required: true,
       unique: true,
     },
+    password: { type: String },
     cart: [{ type: String }],
   },
   {
