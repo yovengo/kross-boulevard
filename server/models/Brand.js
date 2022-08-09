@@ -1,21 +1,24 @@
-const {Schema, model} = require('mongoose')
+const { Schema, model } = require('mongoose');
 
-const schema = new Schema({
+const schema = new Schema(
+  {
     name: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     officialSiteURL: {
-        type: String
+      type: String,
     },
     instagramURL: {
-        type: String
+      type: String,
     },
     icon: {
-        type: String
-    }
-}, {
-    timestamps: true
-})
+      type: String,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = model('Brand', schema)
+module.exports = model('Brand', schema);

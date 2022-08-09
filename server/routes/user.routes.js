@@ -1,4 +1,4 @@
-const express = require('express')
-const router = express.Router({mergeParams: true})
+const express = require('express');
+const router = express.Router({ mergeParams: true });
 
-module.exports = router
+module.exports = router;
