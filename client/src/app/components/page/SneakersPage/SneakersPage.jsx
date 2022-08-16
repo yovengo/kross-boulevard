@@ -9,11 +9,10 @@ import { Arrow } from '../../../assets/svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBrandById } from '../../../store/brands';
 import { getSneakersById } from '../../../store/sneakers';
-import { getCartData, getCurrentUser, getIsLoggedIn, updateUserData } from '../../../store/users';
+import { getCartData, getIsLoggedIn, updateUserData } from '../../../store/users';
 
 const SneakersPage = ({ sneakersId }) => {
   const dispatch = useDispatch();
-  const currentUser = useSelector(getCurrentUser());
   const currentCart = useSelector(getCartData());
   const isLoggedIn = useSelector(getIsLoggedIn());
 
@@ -28,12 +27,12 @@ const SneakersPage = ({ sneakersId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const cartValue = !currentCart ? [sneakersId] : [...currentCart, sneakersId];
     cartValue.sort();
 
     dispatch(
       updateUserData({
-        ...currentUser,
         cart: cartValue,
       })
     );
@@ -87,13 +86,15 @@ const SneakersPage = ({ sneakersId }) => {
                   <div className={styles.sizesInnerContainer}>
                     <span className={styles.sizesInscription}>Sizes:</span>
                     <div className={styles.selectContainer}>
-                      <select defaultValue="0" role="button" className={styles.select}>
-                        {sneakers.sizes.map((s, i) => (
-                          <option disabled key={s} value={i}>
-                            {s}
-                          </option>
-                        ))}
-                      </select>
+                      {sneakers && (
+                        <select defaultValue="0" role="button" className={styles.select}>
+                          {sneakers.sizes.map((size, index) => (
+                            <option disabled key={size} value={index}>
+                              {size}
+                            </option>
+                          ))}
+                        </select>
+                      )}
                       <span className={styles.arrowIcon}>
                         <Arrow />
                       </span>

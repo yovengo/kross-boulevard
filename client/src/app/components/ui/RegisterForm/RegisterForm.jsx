@@ -50,7 +50,7 @@ const RegisterForm = () => {
     e.preventDefault();
     const isValid = validate();
     if (!isValid) return;
-    dispatch(signUp(data));
+    dispatch(signUp({ ...data }));
   };
 
   return (

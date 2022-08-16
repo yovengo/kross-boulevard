@@ -20,7 +20,7 @@ const Main = () => {
         <div className={styles.imgBlock}>
           <div className={styles.imgBlockContainer}>
             <div className={styles.littleImgContainer}>
-              <Link to="/sneakers/11b20b5880ed49eaa9156849f6967s03">
+              <Link to="/sneakers/62e69d5a5458aac0ed320b14">
                 <img
                   alt="sneakers"
                   className={styles.littleImg}
@@ -29,7 +29,7 @@ const Main = () => {
               </Link>
             </div>
             <div className={styles.littleImgContainer}>
-              <Link to="/sneakers/11b20b5880ed49eaa9156849f6967s39">
+              <Link to="/sneakers/62e69d5a5458aac0ed320b38">
                 <img
                   alt="sneakers"
                   className={styles.littleImg}
@@ -38,7 +38,7 @@ const Main = () => {
               </Link>
             </div>
             <div className={styles.bigImgContainer}>
-              <Link to="/sneakers/11b20b5880ed49eaa9156849f6967s36">
+              <Link to="/sneakers/62e69d5a5458aac0ed320b35">
                 <img
                   alt="sneakers"
                   className={styles.bigImg}
@@ -49,7 +49,7 @@ const Main = () => {
           </div>
           <div className={styles.imgBlockContainer}>
             <div className={styles.bigImgContainer}>
-              <Link to="/sneakers/11b20b5880ed49eaa9156849f6967s26">
+              <Link to="/sneakers/62e69d5a5458aac0ed320b2b">
                 <img
                   alt="sneakers"
                   className={styles.bigImg}
@@ -58,7 +58,7 @@ const Main = () => {
               </Link>
             </div>
             <div className={styles.littleImgContainer}>
-              <Link to="/sneakers/11b20b5880ed49eaa9156849f6967s56">
+              <Link to="/sneakers/62e69d5a5458aac0ed320b49">
                 <img
                   alt="sneakers"
                   className={styles.littleImg}
@@ -67,7 +67,7 @@ const Main = () => {
               </Link>
             </div>
             <div className={styles.littleImgContainer}>
-              <Link to="/sneakers/11b20b5880ed49eaa9156849f6967s65">
+              <Link to="/sneakers/62e69d5a5458aac0ed320b52">
                 <img
                   alt="sneakers"
                   className={styles.littleImg}

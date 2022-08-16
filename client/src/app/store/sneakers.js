@@ -40,9 +40,9 @@ export const loadSneakersList = () => async (dispatch) => {
 
 export const getSneakers = () => (state) => state.sneakers.entities;
 export const getSneakersLoadingStatus = () => (state) => state.sneakers.isLoading;
-export const getSneakersById = (sneakersId) => (state) => {
-  return state.sneakers.entities.find((s) => s._id === sneakersId);
-};
+export const getSneakersById = (sneakersId) => (state) =>
+  state.sneakers.entities ? state.sneakers.entities.find((s) => s._id === sneakersId) : null;
+
 export const getSneakersByIds = (sneakersIds) => (state) => {
   if (state.sneakers.entities && sneakersIds) {
     const sneakersArray = [];

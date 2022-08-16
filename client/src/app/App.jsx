@@ -17,7 +17,7 @@ function App() {
             <Route path="/sneakers/:sneakersId?" component={Sneakers} />
             <Route path="/login/:type?" component={Login} />
             <ProtectedRoute path="/cart" component={Cart} />
-            <Route path="/init" component={DataInit} />
+            <ProtectedRoute path="/init" component={DataInit} />
             <Route path="/logout" component={LogOut} />
             <Route path="/" component={Main} />
             <Redirect to="/" />

@@ -19,7 +19,7 @@ const Header = () => {
   const navigation = [
     { title: 'Home', path: '/' },
     { title: 'Sneakers', path: '/sneakers' },
-    { title: 'Init', path: '/init' },
+    // { title: 'Init', path: '/init' },
   ];
   return (
     <nav className={styles.parent}>
@@ -37,6 +37,11 @@ const Header = () => {
                   <Link to={item.path}>{item.title}</Link>
                 </li>
               ))}
+              {isLoggedIn && (
+                <li className={styles.hiddenNavItem}>
+                  <Link to="/init">Init</Link>
+                </li>
+              )}
             </ul>
             {isLoggedIn ? (
               <>

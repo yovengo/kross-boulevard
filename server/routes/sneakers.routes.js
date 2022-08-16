@@ -11,14 +11,4 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/:sneakersId', async (req, res) => {
-  try {
-    const sneakersId = req.params.sneakersId;
-    const foundSneakers = await Sneakers.findById(sneakersId);
-    res.status(200).send(foundSneakers);
-  } catch (e) {
-    res.status(500).json({ message: 'An error has occurred on the server. Try later' });
-  }
-});
-
 module.exports = router;

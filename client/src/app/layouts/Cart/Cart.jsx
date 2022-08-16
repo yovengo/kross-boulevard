@@ -6,14 +6,13 @@ import styles from './Cart.module.scss';
 import { Brand } from '../../components/ui';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getCartData, getCurrentUser, updateUserData } from '../../store/users';
+import { getCartData, updateUserData } from '../../store/users';
 import { getSneakersByIds } from '../../store/sneakers';
 import { RightArrow } from '../../assets/svg';
 
 const Cart = () => {
   const dispatch = useDispatch();
 
-  const currentUser = useSelector(getCurrentUser());
   const currentCart = useSelector(getCartData());
   const sneakers = useSelector(getSneakersByIds(currentCart));
 
@@ -28,7 +27,6 @@ const Cart = () => {
 
     dispatch(
       updateUserData({
-        ...currentUser,
         cart: updatedCurrentCart,
       })
     );
