@@ -8,7 +8,7 @@ const Brand = ({ id }) => {
   const brand = useSelector(getBrandById(id));
 
   if (!isLoading) {
-    return <span>{brand.name}</span>;
+    return <span>{brand?.name}</span>;
   } else return 'Loading...';
 };
 Brand.propTypes = {

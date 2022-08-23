@@ -39,7 +39,7 @@ export const loadMaterialsList = () => async (dispatch) => {
 export const getMaterials = () => (state) => state.materials.entities;
 export const getMaterialsLoadingStatus = () => (state) => state.materials.isLoading;
 export const getMaterialsByIds = (materialsIds) => (state) => {
-  if (state.materials.entities) {
+  if (state.materials.entities && materialsIds) {
     const materialsArray = [];
     for (const materId of materialsIds) {
       for (const material of state.materials.entities) {

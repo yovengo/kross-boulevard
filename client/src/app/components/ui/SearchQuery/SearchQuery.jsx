@@ -22,7 +22,7 @@ const SearchQuery = () => {
 
   if (isLoading) return '';
 
-  const filteredSneakers = sneakers.filter((s) => s.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
+  const filteredSneakers = sneakers.filter((s) => s?.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
 
   return (
     <div className={styles.parent}>

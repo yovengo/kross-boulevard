@@ -21,6 +21,12 @@ const Header = () => {
     { title: 'Sneakers', path: '/sneakers' },
     // { title: 'Init', path: '/init' },
   ];
+
+  const protectedNavigation = [
+    { title: 'Init', path: '/init' },
+    { title: 'Admin', path: '/admin' },
+  ];
+
   return (
     <nav className={styles.parent}>
       <div className={styles.mainContainer}>
@@ -37,11 +43,12 @@ const Header = () => {
                   <Link to={item.path}>{item.title}</Link>
                 </li>
               ))}
-              {isLoggedIn && (
-                <li className={styles.hiddenNavItem}>
-                  <Link to="/init">Init</Link>
-                </li>
-              )}
+              {isLoggedIn &&
+                protectedNavigation.map((item, index) => (
+                  <li key={index} className={styles.hiddenNavItem}>
+                    <Link to={item.path}>{item.title}</Link>
+                  </li>
+                ))}
             </ul>
             {isLoggedIn ? (
               <>

@@ -13,7 +13,7 @@ const GroupList = ({ items, selectedItem, onClearFilter, onItemSelect }) => {
           role="button"
           className={`${styles.firstItem} ${!selectedItem && styles.firstItem_selected}`}
         >
-          AllBrands
+          All Brands
         </li>
         {items.map((item) => (
           <li

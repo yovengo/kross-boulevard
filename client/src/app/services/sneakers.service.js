@@ -8,6 +8,14 @@ const sneakersService = {
     return data;
   },
   create: async (payload) => {
+    const { data } = await httpService.post(sneakersEndpoint, payload);
+    return data;
+  },
+  remove: async (sneakersId) => {
+    const { data } = await httpService.delete(sneakersEndpoint + sneakersId);
+    return data;
+  },
+  update: async (payload) => {
     const { data } = await httpService.put(sneakersEndpoint + payload._id, payload);
     return data;
   },
