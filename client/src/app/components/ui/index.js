@@ -9,3 +9,6 @@ export { Slider } from './Slider';
 export { LoginForm } from './LoginForm';
 export { RegisterForm } from './RegisterForm';
 export { ProfileDropDown } from './ProfileDropDown';
+export { CartItem } from './CartItem';
+export { Checkout } from './Checkout';
+export { AdminPanelItem } from './AdminPanelItem';

@@ -10,8 +10,8 @@ const MaterialsList = ({ materials }) => {
 
   return (
     <>
-      {materialsList.map((m) => (
-        <Material key={m._id} {...m} />
+      {materialsList.map((material) => (
+        <Material key={material._id} {...material} />
       ))}
     </>
   );

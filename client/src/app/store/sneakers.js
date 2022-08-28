@@ -67,7 +67,7 @@ export const loadSneakersList = () => async (dispatch) => {
 export const createSneakers = (payload) => async (dispatch) => {
   dispatch(sneakersCreateRequested());
   try {
-    const { content } = sneakersService.create(payload);
+    const { content } = await sneakersService.create(payload);
     dispatch(sneakersCreated(content));
   } catch (error) {
     dispatch(sneakersCreateFailed(error.message));

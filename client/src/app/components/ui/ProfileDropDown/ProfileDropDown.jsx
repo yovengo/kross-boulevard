@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProfileDropDown.module.scss';
 
+import { DefaultAvatar } from '../../../assets/svg';
+
 import { useSelector } from 'react-redux';
 import { getCurrentUser, getIsLoggedIn } from '../../../store/users';
-import { DefaultAvatar } from '../../../assets/svg';
 
 const ProfileDropDown = (props) => {
   const currentUser = useSelector(getCurrentUser());
@@ -38,6 +39,6 @@ const ProfileDropDown = (props) => {
         </ul>
       </div>
     );
-  } else return '';
+  } else return null;
 };
 export default ProfileDropDown;

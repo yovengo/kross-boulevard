@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import styles from './AdminPanel.module.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +6,7 @@ import { createSneakers, getSneakers, removeSneakers, updateSneakersData } from 
 import { getBrands } from '../../store/brands';
 import { getMaterials } from '../../store/materials';
 
-import { Brand, MaterialsList } from '../../components/ui';
+import { AdminPanelItem } from '../../components/ui';
 import { MultiSelectField, RadioField, SelectField, TextareaField, TextField } from '../../components/common/form';
 
 const AdminPanel = () => {
@@ -16,6 +15,8 @@ const AdminPanel = () => {
   const sneakers = useSelector(getSneakers());
   const brands = useSelector(getBrands());
   const materials = useSelector(getMaterials());
+
+  const reversedSneakers = sneakers && [...sneakers].reverse();
 
   const initData = {
     brand: '',
@@ -55,6 +56,7 @@ const AdminPanel = () => {
       ...sneakersPair,
       sizes: sneakersPair.sizes.join(),
       image: sneakersPair.image.join(),
+      materials: getMaterialsByIds(sneakersPair.materials),
     });
   };
 
@@ -170,62 +172,7 @@ const AdminPanel = () => {
             </div>
           </form>
         )}
-
-        <div className={styles.rightContent}>
-          {sneakers &&
-            sneakers.map((sneakersPair) => (
-              <div key={sneakersPair?._id} className={styles.cartItem}>
-                <img src={sneakersPair?.image[0]} alt="sneakers" className={styles.img} />
-                <div className={styles.cartContentLeft}>
-                  <span className={styles.brand}>
-                    <Brand id={sneakersPair?.brand} />
-                  </span>
-                  <span className={styles.name}>{sneakersPair?.name}</span>
-                  <h2 className={styles.idContainer}>
-                    Product Id: <span className={styles.id}>{sneakersPair?._id}</span>
-                  </h2>
-                </div>
-                <div className={styles.cartContentMiddle}>
-                  <div className={styles.cartContentMiddleContainer}>
-                    <span className={styles.stock}>{sneakersPair?.isInStock ? 'In Stock' : 'Out of Stock'}</span>
-                    <h2>
-                      Sex: <span className={styles.sex}>{sneakersPair?.sex}</span>
-                    </h2>
-                    <h2>
-                      Sizes:{' '}
-                      {sneakersPair?.sizes.map((size) => (
-                        <span className={styles.sizes} key={size}>
-                          {size},{' '}
-                        </span>
-                      ))}
-                    </h2>
-                    <h2>
-                      Materials: <MaterialsList materials={sneakersPair?.materials} />
-                    </h2>
-                    <h2>
-                      Описание на{' '}
-                      <Link to={`/sneakers/${sneakersPair?._id}`} className={styles.description}>
-                        странице товара
-                      </Link>
-                    </h2>
-                  </div>
-                </div>
-                <div>
-                  <h2 className={styles.price}>{sneakersPair?.price}&nbsp;&#8381;</h2>
-                  <div>
-                    <button onClick={() => handleEdit(sneakersPair)} className={styles.editBtn}>
-                      Edit
-                    </button>
-                  </div>
-                  <div>
-                    <button onClick={() => handleRemove(sneakersPair._id)} className={styles.removeBtn}>
-                      Remove
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-        </div>
+        <AdminPanelItem sneakers={reversedSneakers} onEdit={handleEdit} onRemove={handleRemove} />
       </div>
     </section>
   );

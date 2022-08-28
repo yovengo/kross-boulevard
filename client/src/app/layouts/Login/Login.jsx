@@ -16,10 +16,10 @@ const Login = () => {
     <section className={styles.parent}>
       <div className={styles.mainContainer}>
         <div className={styles.leftContent}>
-          <h1 className={styles.leftHeading}>Slow-carb next level shoindcgoitch ethical authentic, poko scenester</h1>
+          <h1 className={styles.leftHeading}>The rarest and most exclusive sneakers you will find only with us</h1>
           <p className={styles.leftParagraph}>
-            Poke slow-carb mixtape knausgaard, typewriter street art gentrify hammock starladder roathse. Craies vegan
-            tousled etsy austin.
+            Our website features eight of the most popular sneaker brands. Among them you will definitely find something
+            to your liking!
           </p>
         </div>
         <div className={styles.rightContent}>

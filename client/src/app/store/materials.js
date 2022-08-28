@@ -29,7 +29,7 @@ const { materialsRequested, materialsReceived, materialsRequestFailed } = action
 export const loadMaterialsList = () => async (dispatch) => {
   dispatch(materialsRequested());
   try {
-    const { content } = await materialService.fetchAll();
+    const { content } = await materialService.get();
     dispatch(materialsReceived(content));
   } catch (error) {
     dispatch(materialsRequestFailed(error.message));

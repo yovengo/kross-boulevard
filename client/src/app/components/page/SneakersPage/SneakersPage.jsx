@@ -13,11 +13,12 @@ import { getCartData, getIsLoggedIn, updateUserData } from '../../../store/users
 
 const SneakersPage = ({ sneakersId }) => {
   const dispatch = useDispatch();
-  const currentCart = useSelector(getCartData());
-  const isLoggedIn = useSelector(getIsLoggedIn());
 
   const sneakers = useSelector(getSneakersById(sneakersId));
   const brand = useSelector(getBrandById(sneakers.brand));
+
+  const currentCart = useSelector(getCartData());
+  const isLoggedIn = useSelector(getIsLoggedIn());
 
   const [buttonState, setButtonState] = useState(false);
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
+
 import Logo from '../../../assets/svg/Logo';
 import { GitHub, Instagram, Telegram } from '../../../assets/svg';
 

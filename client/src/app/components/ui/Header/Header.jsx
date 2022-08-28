@@ -8,7 +8,6 @@ import { CartIcon, Cross, DropDownIcon, Logo } from '../../../assets/svg';
 
 import { useSelector } from 'react-redux';
 import { getCartData, getIsLoggedIn } from '../../../store/users';
-import PropTypes from 'prop-types';
 
 const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn());
@@ -19,7 +18,6 @@ const Header = () => {
   const navigation = [
     { title: 'Home', path: '/' },
     { title: 'Sneakers', path: '/sneakers' },
-    // { title: 'Init', path: '/init' },
   ];
 
   const protectedNavigation = [
@@ -92,8 +90,5 @@ const Header = () => {
       </div>
     </nav>
   );
-};
-Header.propTypes = {
-  currentCart: PropTypes.any,
 };
 export default Header;

@@ -12,6 +12,6 @@ const Brand = ({ id }) => {
   } else return 'Loading...';
 };
 Brand.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 export default Brand;

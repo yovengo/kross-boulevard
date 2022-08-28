@@ -3,7 +3,7 @@ import httpService from './http.service';
 const materialEndpoint = 'material/';
 
 const materialService = {
-  fetchAll: async () => {
+  get: async () => {
     const { data } = await httpService.get(materialEndpoint);
     return data;
   },

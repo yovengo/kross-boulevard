@@ -4,8 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { Footer, Header } from './components/ui';
 import { AdminPanel, Cart, DataInit, Login, LogOut, Main, Sneakers } from './layouts';
 
-import AppLoader from './components/ui/hoc/AppLoader';
-import ProtectedRoute from './components/ui/hoc/ProtectedRoute';
+import { AppLoader, ProtectedRoute } from './components/ui/hoc';
 
 function App() {
   return (

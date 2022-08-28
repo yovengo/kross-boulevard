@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { SneakersListPage, SneakersPage } from '../../components/page';
-import SneakersLoader from '../../components/ui/hoc/SneakersLoader';
+import { SneakersLoader } from '../../components/ui/hoc';
 
 const Sneakers = () => {
   const params = useParams();

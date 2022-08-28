@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './SearchQuery.module.scss';
 
+import { Magnifier } from '../../../assets/svg';
+
 import { useSelector } from 'react-redux';
 import { getSneakers, getSneakersLoadingStatus } from '../../../store/sneakers';
-import { Magnifier } from '../../../assets/svg';
 
 const SearchQuery = () => {
   const sneakers = useSelector(getSneakers());
@@ -20,7 +21,7 @@ const SearchQuery = () => {
     setSearchQuery('');
   };
 
-  if (isLoading) return '';
+  if (isLoading) return null;
 
   const filteredSneakers = sneakers.filter((s) => s?.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
 
@@ -40,11 +41,11 @@ const SearchQuery = () => {
       {searchQuery.length !== 0 && filteredSneakers.length !== 0 && (
         <div className={styles.searchResultContainer}>
           <ul>
-            {filteredSneakers.slice(0, 8).map((item) => {
+            {filteredSneakers.slice(0, 16).map((sneakers) => {
               return (
-                <div key={item._id} onClick={handleClearSearchQuery} className={styles.searchResultItem}>
-                  <Link to={`/sneakers/${item._id}`}>
-                    <li className={styles.searchResultInscription}>{item.name}</li>
+                <div key={sneakers._id} onClick={handleClearSearchQuery} className={styles.searchResultItem}>
+                  <Link to={`/sneakers/${sneakers._id}`}>
+                    <li className={styles.searchResultInscription}>{sneakers.name}</li>
                   </Link>
                 </div>
               );

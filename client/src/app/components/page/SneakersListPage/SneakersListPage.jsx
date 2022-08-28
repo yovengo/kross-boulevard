@@ -57,7 +57,6 @@ const SneakersListPage = () => {
           <h1 className={styles.pathHeading}>
             <Link to="/">Home</Link> > <span className={styles.selectedPath}>Sneakers</span>
           </h1>
-
           {brands && !brandsLoading && (
             <div className={styles.navTabContainer}>
               <GroupList
