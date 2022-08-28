@@ -5,6 +5,7 @@ import { getSneakersLoadingStatus, loadSneakersList } from '../../../store/sneak
 import { loadBrandsList } from '../../../store/brands';
 import { loadMaterialsList } from '../../../store/materials';
 import { getIsLoggedIn, getUsersLoadingStatus, loadUsersList } from '../../../store/users';
+import { Loader } from '../../common';
 
 const AppLoader = ({ children }) => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const AppLoader = ({ children }) => {
     }
   }, [isLoggedIn]);
 
-  if (sneakersLoadingStatus && usersLoadingStatus) return 'Loading...';
+  if (sneakersLoadingStatus && usersLoadingStatus) return <Loader />;
   return children;
 };
 AppLoader.propTypes = {
