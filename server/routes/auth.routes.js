@@ -103,7 +103,7 @@ router.post('/signInWithPassword', [
 ]);
 
 function isTokenInvalid(data, dbToken) {
-  return !data || !dbToken || data.id !== dbToken?.user?.toString();
+  return !data || !dbToken || data._id !== dbToken?.user?.toString();
 }
 
 router.post('/token', async (req, res) => {
@@ -117,11 +117,11 @@ router.post('/token', async (req, res) => {
     }
 
     const tokens = await tokenService.generate({
-      id: data.id,
+      _id: data._id,
     });
-    await tokenService.save(data.id, tokens.refreshToken);
+    await tokenService.save(data._id, tokens.refreshToken);
 
-    res.status(200).send({ ...tokens, userId: data.id });
+    res.status(200).send({ ...tokens, userId: data._id });
   } catch (e) {
     res.status(500).json({
       message: 'An error has occurred on the server. Try later',
