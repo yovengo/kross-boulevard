@@ -1,5 +1,5 @@
 .rightContent {
-  @apply md:w-2/6;
+  @apply lg:w-2/6 w-auto lg:mt-0 mt-6;
   .rightContentContainer {
     @apply flex flex-col items-end;
     .checkout {

@@ -1,5 +1,5 @@
 .parent {
-  @apply lg:flex w-auto text-lg font-medium text-gray-900;
+  @apply lg:flex w-auto lg:h-auto h-20 overflow-auto text-lg font-medium text-gray-900;
   .itemsContainer {
     @apply lg:flex border rounded-xl bg-white;
     .firstItem {
