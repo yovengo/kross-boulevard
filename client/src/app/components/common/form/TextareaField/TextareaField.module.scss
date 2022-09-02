@@ -1,0 +1,9 @@
+.parent {
+  @apply mb-4;
+  .label {
+    @apply leading-7 text-gray-600;
+  }
+  .textarea {
+    @apply w-full rounded outline-none border-2;
+  }
+}

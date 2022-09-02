@@ -1,0 +1,6 @@
+.parent {
+  @apply absolute w-full h-full top-0 left-0 overflow-auto;
+  .loader {
+    @apply absolute top-1/2 left-1/2 mr-2 w-10 h-10 text-gray-200 animate-spin fill-red-700;
+  }
+}

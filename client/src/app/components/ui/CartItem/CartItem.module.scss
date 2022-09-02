@@ -1,0 +1,51 @@
+.leftContent {
+  @apply -my-8 md:w-4/6 divide-y-2 divide-gray-100;
+  .cartItem {
+    @apply py-8 flex flex-wrap md:flex-nowrap;
+    .img {
+      @apply md:block hidden w-32 h-32 object-cover object-center rounded-xl;
+    }
+    .cartContentLeft {
+      @apply md:w-64 md:mb-0 md:ml-6 mb-6 flex-shrink-0 flex flex-col;
+      .brand {
+        @apply font-medium text-gray-500;
+      }
+      .name {
+        @apply font-medium text-gray-700;
+      }
+      .stock {
+        @apply text-gray-500 mt-2;
+      }
+    }
+    .cartContentMiddle {
+      @apply md:flex-grow md:mr-6;
+      .cartContentMiddleContainer {
+        @apply pb-2;
+        .select {
+          @apply border rounded-lg appearance-none border-gray-300 py-0.5 focus:outline-none text-base px-5 hover:bg-gray-100;
+        }
+      }
+      .id {
+        @apply font-medium;
+      }
+      .productPageLink {
+        @apply text-red-700 inline-flex items-center mt-4;
+      }
+    }
+    .price {
+      @apply text-xl font-medium text-gray-900 mb-2;
+    }
+    .removeBtn {
+      @apply text-red-700 underline;
+    }
+  }
+  .absenceCartItems {
+    @apply py-36 flex flex-wrap md:flex-col items-center;
+    .absenceHeading {
+      @apply text-xl font-medium;
+    }
+    .absenceBtn {
+      @apply text-center text-white bg-red-600 rounded-xl py-2 px-8 mt-4 hover:bg-red-700;
+    }
+  }
+}
