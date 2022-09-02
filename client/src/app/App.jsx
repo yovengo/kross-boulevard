@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 import { Footer, Header } from './components/ui';
-import { AdminPanel, Cart, DataInit, Login, LogOut, Main, Sneakers } from './layouts';
+import { AdminPanel, Cart, Login, LogOut, Main, Sneakers } from './layouts';
 
 import { AppLoader, ProtectedRoute } from './components/ui/hoc';
 
@@ -16,7 +16,6 @@ function App() {
             <Route path="/sneakers/:sneakersId?" component={Sneakers} />
             <Route path="/login/:type?" component={Login} />
             <ProtectedRoute path="/cart" component={Cart} />
-            <ProtectedRoute path="/init" component={DataInit} />
             <ProtectedRoute path="/admin" component={AdminPanel} />
             <Route path="/logout" component={LogOut} />
             <Route path="/" component={Main} />

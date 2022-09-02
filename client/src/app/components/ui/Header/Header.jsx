@@ -20,10 +20,7 @@ const Header = () => {
     { title: 'Sneakers', path: '/sneakers' },
   ];
 
-  const protectedNavigation = [
-    { title: 'Init', path: '/init' },
-    { title: 'Admin', path: '/admin' },
-  ];
+  const protectedNavigation = [{ title: 'Admin', path: '/admin' }];
 
   return (
     <nav className={styles.parent}>

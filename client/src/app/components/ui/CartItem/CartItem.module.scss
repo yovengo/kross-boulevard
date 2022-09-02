@@ -35,6 +35,9 @@
     .price {
       @apply text-xl font-medium text-gray-900 mb-2;
     }
+    .addBtn {
+      @apply mr-2 text-blue-600 underline;
+    }
     .removeBtn {
       @apply text-red-700 underline;
     }
