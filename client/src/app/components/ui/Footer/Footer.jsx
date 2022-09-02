@@ -30,7 +30,7 @@ const Footer = () => {
           <a href="https://github.com/yovengo" className={styles.githubLink} target="_blank">
             <GitHub />
           </a>
-          <a href="client/src/app/components/ui/Footer/Footer" className={styles.instLink} target="_blank">
+          <a href="https://www.instagram.com/glhf.ognevoy/" className={styles.instLink} target="_blank">
             <Instagram />
           </a>
         </span>
