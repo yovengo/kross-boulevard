@@ -18,6 +18,17 @@ const Cart = () => {
   const shippingCost = subtotal < 8500 && subtotal > 0 ? 750 : 0;
   const orderTotal = subtotal + shippingCost;
 
+  const handleAddCartItem = (sneakersId) => {
+    const cartValue = !currentCart ? [sneakersId] : [...currentCart, sneakersId];
+    cartValue.sort();
+
+    dispatch(
+      updateUserData({
+        cart: cartValue,
+      })
+    );
+  };
+
   const handleRemoveCartItem = (id) => {
     const updatedCurrentCart = [...currentCart];
     const indexOfCartItem = updatedCurrentCart.findIndex((i) => i === id);
@@ -33,7 +44,7 @@ const Cart = () => {
   return (
     <section className={styles.parent}>
       <div className={styles.mainContainer}>
-        <CartItem sneakers={sneakers} onRemoveCartItem={handleRemoveCartItem} />
+        <CartItem sneakers={sneakers} onAddCartItem={handleAddCartItem} onRemoveCartItem={handleRemoveCartItem} />
         <Checkout shippingCost={shippingCost} subtotal={subtotal} orderTotal={orderTotal} currentCart={currentCart} />
       </div>
     </section>

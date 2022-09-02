@@ -1,0 +1,15 @@
+.parent {
+  @apply mt-8 bg-gray-100 rounded-xl px-5 py-8;
+  .heading {
+    @apply text-xl mb-2;
+  }
+  .listContainer {
+    @apply mb-2;
+    .error {
+      @apply text-xl;
+    }
+  }
+  .btn {
+    @apply text-center text-white bg-red-600 rounded-xl w-full py-2 px-8 hover:bg-red-700 disabled:bg-gray-300;
+  }
+}

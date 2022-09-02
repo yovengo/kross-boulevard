@@ -12,3 +12,4 @@ export { ProfileDropDown } from './ProfileDropDown';
 export { CartItem } from './CartItem';
 export { Checkout } from './Checkout';
 export { AdminPanelItem } from './AdminPanelItem';
+export { DataInit } from './DataInit';

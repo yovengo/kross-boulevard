@@ -6,7 +6,7 @@ import styles from './CartItem.module.scss';
 import { RightArrow } from '../../../assets/svg';
 import { Brand } from '../Brand';
 
-const CartItem = ({ sneakers, onRemoveCartItem }) => {
+const CartItem = ({ sneakers, onAddCartItem, onRemoveCartItem }) => {
   return (
     <div className={styles.leftContent}>
       {sneakers.length !== 0 ? (
@@ -41,6 +41,9 @@ const CartItem = ({ sneakers, onRemoveCartItem }) => {
             </div>
             <div>
               <h2 className={styles.price}>{s.price}&nbsp;&#8381;</h2>
+              <button onClick={() => onAddCartItem(s._id)} className={styles.addBtn}>
+                Add
+              </button>
               <button onClick={() => onRemoveCartItem(s._id)} className={styles.removeBtn}>
                 Remove
               </button>
@@ -60,6 +63,7 @@ const CartItem = ({ sneakers, onRemoveCartItem }) => {
   );
 };
 CartItem.propTypes = {
+  onAddCartItem: PropTypes.func.isRequired,
   onRemoveCartItem: PropTypes.func.isRequired,
   sneakers: PropTypes.array,
 };

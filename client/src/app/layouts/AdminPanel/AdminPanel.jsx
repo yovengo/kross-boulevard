@@ -6,7 +6,7 @@ import { createSneakers, getSneakers, removeSneakers, updateSneakersData } from 
 import { getBrands } from '../../store/brands';
 import { getMaterials } from '../../store/materials';
 
-import { AdminPanelItem } from '../../components/ui';
+import { AdminPanelItem, DataInit } from '../../components/ui';
 import { MultiSelectField, RadioField, SelectField, TextareaField, TextField } from '../../components/common/form';
 
 const AdminPanel = () => {
@@ -170,6 +170,7 @@ const AdminPanel = () => {
                 Submit
               </button>
             </div>
+            <DataInit />
           </form>
         )}
         <AdminPanelItem sneakers={reversedSneakers} onEdit={handleEdit} onRemove={handleRemove} />
