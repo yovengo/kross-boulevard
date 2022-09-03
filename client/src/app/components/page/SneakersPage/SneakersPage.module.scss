@@ -46,20 +46,14 @@
           }
         }
         .sizesContainer {
-          @apply flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5;
+          @apply flex items-center mt-6 mb-5 pb-5 border-b-2 border-gray-100;
+          .sizesInscription {
+            @apply mr-3;
+          }
           .sizesInnerContainer {
-            @apply flex items-center;
-            .sizesInscription {
-              @apply mr-3;
-            }
-            .selectContainer {
-              @apply relative;
-              .select {
-                @apply rounded-xl border appearance-none border-gray-300 py-2 focus:outline-none text-base pl-3 pr-10 hover:bg-gray-100;
-              }
-              .arrowIcon {
-                @apply absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center;
-              }
+            @apply flex;
+            .sizeItem {
+              @apply px-2 ml-1 bg-gray-100 rounded-xl;
             }
           }
         }
