@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import styles from './SneakersPage.module.scss';
 
 import { Brand, MaterialsList, Slider } from '../../ui';
-import { Arrow } from '../../../assets/svg';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getBrandById } from '../../../store/brands';
@@ -84,24 +83,12 @@ const SneakersPage = ({ sneakersId }) => {
               </div>
               <form onSubmit={handleSubmit}>
                 <div className={styles.sizesContainer}>
+                  <span className={styles.sizesInscription}>Available sizes:</span>
                   <div className={styles.sizesInnerContainer}>
-                    <span className={styles.sizesInscription}>Sizes:</span>
-                    <div className={styles.selectContainer}>
-                      {sneakers && (
-                        <select defaultValue="0" role="button" className={styles.select}>
-                          {sneakers.sizes.map((size, index) => (
-                            <option disabled key={size} value={index}>
-                              {size}
-                            </option>
-                          ))}
-                        </select>
-                      )}
-                      <span className={styles.arrowIcon}>
-                        <Arrow />
-                      </span>
-                    </div>
+                    {sneakers && sneakers.sizes.map((size) => <p className={styles.sizeItem}>{size}</p>)}
                   </div>
                 </div>
+
                 <div className={styles.priceAndBtnContainer}>
                   <span className={styles.price}>{sneakers.price} &#8381;</span>
                   {!buttonState ? (
@@ -117,13 +104,15 @@ const SneakersPage = ({ sneakersId }) => {
                     </Link>
                   )}
                 </div>
-                {!isLoggedIn && (
+                {!isLoggedIn ? (
                   <p className={styles.notice}>
                     <Link to="/login" className={styles.loginLink}>
                       Login
                     </Link>{' '}
                     before shopping
                   </p>
+                ) : (
+                  <p className={styles.notice}>Choose your size in the shopping cart!</p>
                 )}
               </form>
             </div>
